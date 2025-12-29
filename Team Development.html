@@ -1,0 +1,1833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Development: Building High-Performance Teams for Project Success</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700;800&display=swap');
+
+        :root {
+            --primary-color: #1565C0; /* Deep Blue */
+            --secondary-color: #42A5F5; /* Light Blue */
+            --accent-color: #FF7043; /* Orange */
+            --success-color: #66BB6A; /* Green */
+            --warning-color: #FFB74D; /* Amber */
+            --danger-color: #EF5350; /* Red */
+            --text-color: #2C3E50;
+            --light-bg: #E3F2FD;
+            --medium-gray: #B0BEC5;
+            --dark-gray: #546E7A;
+            --white: #ffffff;
+            --font-main: 'Roboto', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.8;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0D47A1 100%);
+            color: var(--white);
+            padding: 120px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(255, 112, 67, 0.15) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(255, 112, 67, 0.3);
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3.8rem;
+            margin: 0 0 20px;
+            line-height: 1.3;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            font-weight: 300;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        /* Main Sections */
+        section {
+            margin-bottom: 80px;
+            padding: 60px 40px;
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--accent-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+            border-radius: 16px 16px 0 0;
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin: 0 0 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--accent-color);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        h3 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin: 40px 0 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        h4 {
+            font-family: var(--font-main);
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+            padding-left: 15px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        p {
+            font-size: 1.15rem;
+            color: var(--dark-gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .lead {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--primary-color);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 112, 67, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* Chart Section */
+        .chart-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin: 50px 0;
+        }
+
+        .chart-container {
+            background: var(--light-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border: 2px solid rgba(255, 112, 67, 0.1);
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+
+        /* Component Detail */
+        .component-detail {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border: 2px solid rgba(255, 112, 67, 0.1);
+        }
+
+        .component-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .component-icon {
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .component-title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .practical-tip {
+            background-color: rgba(255, 112, 67, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 25px;
+            margin-top: 30px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .practical-tip::before {
+            content: '💡';
+            position: absolute;
+            left: -15px;
+            top: -15px;
+            background: var(--accent-color);
+            color: var(--white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        /* Grid Layouts */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        /* Tabs */
+        .tab-container {
+            margin: 50px 0;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-button {
+            padding: 15px 35px;
+            background-color: var(--light-bg);
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-main);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--dark-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .tab-button.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(21, 101, 192, 0.3);
+        }
+
+        .tab-button:hover:not(.active) {
+            background-color: var(--medium-gray);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .tab-content {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border: 1px solid var(--medium-gray);
+            min-height: 400px;
+        }
+
+        /* Scenarios */
+        .scenario-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--medium-gray);
+        }
+
+        .scenario-icon {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .scenario-steps {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .scenario-steps::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--accent-color), var(--primary-color));
+        }
+
+        .step {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--light-bg);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            position: absolute;
+            left: -55px;
+            top: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            box-shadow: 0 6px 15px rgba(255, 112, 67, 0.4);
+            font-family: var(--font-heading);
+        }
+
+        .step.challenge .step-number {
+            background-color: var(--danger-color);
+        }
+
+        .step.application .step-number {
+            background-color: var(--warning-color);
+        }
+
+        .step.result .step-number {
+            background-color: var(--success-color);
+        }
+
+        /* Leadership Section */
+        .leadership-section {
+            background: linear-gradient(135deg, #1565C0 0%, #42A5F5 100%);
+            color: var(--white);
+            border-left-color: var(--secondary-color);
+        }
+
+        .leadership-section h2 {
+            color: var(--white);
+            border-bottom-color: var(--secondary-color);
+        }
+
+        .leadership-section h3 {
+            color: var(--accent-color);
+        }
+
+        .leadership-section .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-top-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .leadership-section .card:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            border-left: 4px solid var(--accent-color);
+            background: rgba(255, 112, 67, 0.1);
+            border-radius: 10px;
+        }
+
+        /* Author Section */
+        .author-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1565C0 100%);
+            color: var(--white);
+            padding: 80px 40px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .author-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(255, 112, 67, 0.2) 0%, transparent 50%);
+        }
+
+        .author-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .author-avatar {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .author-name {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            margin: 0 0 10px;
+            color: var(--white);
+        }
+
+        .author-title {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            margin: 0 0 20px;
+            font-weight: 500;
+        }
+
+        .author-experience {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .chart-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            section {
+                padding: 40px 25px;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+            
+            h3 {
+                font-size: 2rem;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .tab-button {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .hero {
+                padding: 100px 15px 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 30px 20px;
+            }
+            
+            .stats {
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .author-name {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Custom Lists */
+        ul.custom-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul.custom-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        ul.custom-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            width: 25px;
+            height: 25px;
+            background-color: rgba(255, 112, 67, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Additional Effects */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255, 112, 67, 0.1), rgba(21, 101, 192, 0.1));
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+            margin: 20px 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .stat-box .number {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-box .label {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            margin-top: 5px;
+        }
+
+        /* Team Framework Table */
+        .framework-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .framework-table th {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .framework-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .framework-table tr:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+
+        .framework-table tr:hover {
+            background-color: rgba(255, 112, 67, 0.05);
+        }
+
+        /* Team Development Highlight */
+        .development-highlight {
+            background: linear-gradient(135deg, rgba(102, 187, 106, 0.1), rgba(21, 101, 192, 0.1));
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--success-color);
+            margin: 20px 0;
+        }
+
+        /* Team Stages */
+        .team-stages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stage-item {
+            background: var(--light-bg);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid rgba(255, 112, 67, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .stage-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .stage-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+            color: var(--accent-color);
+        }
+
+        .stage-number {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(21, 101, 192, 0.3);
+        }
+
+        /* Competency Matrix */
+        .competency-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .competency-item {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .competency-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .competency-level {
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        /* Team Health Check */
+        .health-check {
+            background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+            padding: 30px;
+            border-radius: 16px;
+            margin: 40px 0;
+            border-left: 6px solid var(--accent-color);
+        }
+
+        .health-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .metric-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span>👥</span>
+                Team Development
+            </a>
+            <div class="nav-links">
+                <a href="#foundations" class="active">Core Foundations</a>
+                <a href="#stages">Team Development Stages</a>
+                <a href="#scenarios">Real-World Applications</a>
+                <a href="#leadership">Leadership & Coaching</a>
+                <a href="#author">Expert Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="badge">Tuckman Model | Psychological Safety | High-Performance Teams 2024</div>
+            <h1>Team Development Excellence</h1>
+            <p class="hero-subtitle">Building High-Performance Teams: Mastering the art of team formation, development, and leadership to drive exceptional project outcomes and organizational success</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">75%</span>
+                    <span class="stat-label">Higher Productivity</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3.2x</span>
+                    <span class="stat-label">Innovation Output</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">68%</span>
+                    <span class="stat-label">Lower Turnover</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <!-- SECTION 1: Core Foundations -->
+            <section id="foundations">
+                <h2>The Five Pillars of Team Development</h2>
+                <p class="lead">According to Harvard Business Review 2024 research, high-performance teams achieve 75% higher productivity, demonstrate 3.2x innovation output, and experience 68% lower turnover through systematic team development practices.</p>
+                
+                <div class="chart-section">
+                    <div class="chart-container">
+                        <div class="chart-wrapper">
+                            <canvas id="pillarsChart"></canvas>
+                        </div>
+                        <p style="text-align: center; margin-top: 20px; color: var(--dark-gray); font-style: italic;">Click any segment to explore detailed insights</p>
+                    </div>
+                    
+                    <div class="component-detail" id="componentDetail">
+                        <div class="component-header">
+                            <div class="component-icon" id="compIcon">🎯</div>
+                            <div>
+                                <h3 class="component-title" id="compTitle">Psychological Safety</h3>
+                                <p style="color: var(--accent-color); font-weight: 500;">The Foundation of High-Performance Teams</p>
+                            </div>
+                        </div>
+                        
+                        <div id="compDesc">
+                            <p>Creating an environment where team members feel safe to take risks, voice opinions, and admit mistakes. Includes:</p>
+                            <ul class="custom-list">
+                                <li>Trust Building & Vulnerability Modeling</li>
+                                <li>Inclusive Communication & Active Listening</li>
+                                <li>Constructive Feedback Culture</li>
+                                <li>Conflict Resolution & Emotional Intelligence</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="practical-tip">
+                            <strong>Strategic Application in Team Building:</strong>
+                            <p id="compAction">Implement "Psychological Safety Audits" with anonymous feedback mechanisms. Research shows teams with high psychological safety achieve 2.5x higher learning capacity and 76% better engagement scores.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-container">
+                    <div class="card">
+                        <div class="card-icon">🤝</div>
+                        <h4>Clear Goals & Roles</h4>
+                        <p>Establishing shared objectives, defining individual responsibilities, and creating alignment around team purpose and direction.</p>
+                        <div class="highlight-box">
+                            <strong>2024 Data:</strong> Teams with clear goals achieve 56% better performance and 42% higher satisfaction.
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">💬</div>
+                        <h4>Effective Communication</h4>
+                        <p>Developing transparent information flow, active listening skills, and constructive dialogue patterns within teams.</p>
+                        <div class="highlight-box">
+                            <strong>Impact:</strong> Effective communication reduces misunderstandings by 67% and improves decision quality by 45%.
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">🔄</div>
+                        <h4>Collaborative Processes</h4>
+                        <p>Creating efficient workflows, decision-making frameworks, and problem-solving approaches that leverage collective intelligence.</p>
+                        <div class="highlight-box">
+                            <strong>Research Findings:</strong> Collaborative teams solve problems 58% faster and generate 42% more innovative solutions.
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">📈</div>
+                        <h4>Continuous Learning</h4>
+                        <p>Fostering growth mindset, knowledge sharing, skill development, and adaptation to changing environments.</p>
+                        <div class="highlight-box">
+                            <strong>Business Impact:</strong> Learning-focused teams adapt to change 3.4x faster and maintain 65% higher engagement.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: Team Development Stages -->
+            <section id="stages">
+                <h2>The Team Development Journey</h2>
+                <p class="lead">Understanding and navigating the natural progression of team development is critical for effective leadership. The 2024 MIT Team Dynamics Study reveals that teams progressing through structured development achieve 71% better outcomes.</p>
+                
+                <div class="grid-container">
+                    <div class="card">
+                        <div class="card-icon">🏗️</div>
+                        <h4>Tuckman's Model Enhanced</h4>
+                        <p>Modern adaptation of Forming, Storming, Norming, Performing with additional focus on Transforming and Adjourning stages.</p>
+                        <div class="development-highlight">
+                            <strong>Key Insight:</strong> Teams that consciously navigate all stages achieve 64% higher performance sustainability.
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">🎭</div>
+                        <h4>Belbin Team Roles</h4>
+                        <p>Understanding and leveraging diverse team roles including Plant, Resource Investigator, Coordinator, Shaper, and Specialist.</p>
+                        <div class="stat-box">
+                            <span class="number">3.2x</span>
+                            <span class="label">Better Role Alignment</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">🌱</div>
+                        <h4>Team Maturity Framework</h4>
+                        <p>Assessing and developing team capabilities across five maturity levels from Working Group to High-Performance Team.</p>
+                        <div class="stat-box">
+                            <span class="number">-55%</span>
+                            <span class="label">Conflict Reduction</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Team Development Stages Framework</h3>
+                <div class="team-stages">
+                    <div class="stage-item">
+                        <div class="stage-number">1</div>
+                        <div class="stage-icon">👋</div>
+                        <h4>Forming</h4>
+                        <p>Orientation, relationship building, understanding goals and boundaries</p>
+                        <div class="stat-box" style="margin-top: 10px;">
+                            <span class="number">2-4</span>
+                            <span class="label">Weeks Duration</span>
+                        </div>
+                    </div>
+                    <div class="stage-item">
+                        <div class="stage-number">2</div>
+                        <div class="stage-icon">⚡</div>
+                        <h4>Storming</h4>
+                        <p>Conflict emergence, role clarification, power dynamics, establishing norms</p>
+                        <div class="stat-box" style="margin-top: 10px;">
+                            <span class="number">3-6</span>
+                            <span class="label">Weeks Duration</span>
+                        </div>
+                    </div>
+                    <div class="stage-item">
+                        <div class="stage-number">3</div>
+                        <div class="stage-icon">🤝</div>
+                        <h4>Norming</h4>
+                        <p>Cohesion building, process establishment, trust development, collaboration</p>
+                        <div class="stat-box" style="margin-top: 10px;">
+                            <span class="number">4-8</span>
+                            <span class="label">Weeks Duration</span>
+                        </div>
+                    </div>
+                    <div class="stage-item">
+                        <div class="stage-number">4</div>
+                        <div class="stage-icon">🚀</div>
+                        <h4>Performing</h4>
+                        <p>High productivity, autonomy, innovation, goal achievement, peak performance</p>
+                        <div class="stat-box" style="margin-top: 10px;">
+                            <span class="number">Ongoing</span>
+                            <span class="label">Optimal State</span>
+                        </div>
+                    </div>
+                    <div class="stage-item">
+                        <div class="stage-number">5</div>
+                        <div class="stage-icon">🔄</div>
+                        <h4>Transforming</h4>
+                        <p>Renewal, adaptation to change, continuous improvement, next level growth</p>
+                        <div class="stat-box" style="margin-top: 10px;">
+                            <span class="number">Ongoing</span>
+                            <span class="label">Evolution Phase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Team Competency Development Matrix</h3>
+                <div class="competency-matrix">
+                    <div class="competency-item">
+                        <h4>Technical Skills</h4>
+                        <p>Domain expertise, tool proficiency, technical problem-solving capabilities</p>
+                        <div class="competency-level">Core Competency</div>
+                    </div>
+                    <div class="competency-item">
+                        <h4>Collaboration Skills</h4>
+                        <p>Communication, conflict resolution, teamwork, interpersonal effectiveness</p>
+                        <div class="competency-level">Team Foundation</div>
+                    </div>
+                    <div class="competency-item">
+                        <h4>Leadership Skills</h4>
+                        <p>Decision-making, influence, mentoring, strategic thinking, accountability</p>
+                        <div class="competency-level">Growth Area</div>
+                    </div>
+                    <div class="competency-item">
+                        <h4>Adaptive Skills</h4>
+                        <p>Learning agility, change management, innovation, resilience, flexibility</p>
+                        <div class="competency-level">Future-Proofing</div>
+                    </div>
+                </div>
+
+                <!-- Team Health Check -->
+                <h3>Team Health Check Framework</h3>
+                <div class="health-check">
+                    <h4>Assess Your Team's Vital Signs</h4>
+                    <p>Regular assessment of key team health indicators to identify areas for development and intervention.</p>
+                    
+                    <div class="health-metrics">
+                        <div class="metric-item">
+                            <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 10px;">📊</div>
+                            <strong>Engagement Level</strong>
+                            <div style="font-size: 0.9rem; color: var(--dark-gray);">Psychological commitment</div>
+                        </div>
+                        <div class="metric-item">
+                            <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 10px;">⚡</div>
+                            <strong>Energy & Morale</strong>
+                            <div style="font-size: 0.9rem; color: var(--dark-gray);">Team enthusiasm</div>
+                        </div>
+                        <div class="metric-item">
+                            <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 10px;">🤝</div>
+                            <strong>Collaboration Quality</strong>
+                            <div style="font-size: 0.9rem; color: var(--dark-gray);">Teamwork effectiveness</div>
+                        </div>
+                        <div class="metric-item">
+                            <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 10px;">🎯</div>
+                            <strong>Goal Alignment</strong>
+                            <div style="font-size: 0.9rem; color: var(--dark-gray);">Shared direction</div>
+                        </div>
+                        <div class="metric-item">
+                            <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 10px;">💡</div>
+                            <strong>Innovation Index</strong>
+                            <div style="font-size: 0.9rem; color: var(--dark-gray);">Creative output</div>
+                        </div>
+                        <div class="metric-item">
+                            <div style="font-size: 2rem; color: var(--accent-color); margin-bottom: 10px;">📈</div>
+                            <strong>Growth Trajectory</strong>
+                            <div style="font-size: 0.9rem; color: var(--dark-gray);">Skill development</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: Real-World Applications -->
+            <section id="scenarios">
+                <h2>Team Development Success Stories</h2>
+                <p class="lead">Theoretical frameworks transform into tangible value when applied in real organizational contexts. These scenarios demonstrate how strategic team development turns challenges into opportunities and groups into high-performance teams.</p>
+                
+                <div class="tab-container">
+                    <div class="tabs">
+                        <button class="tab-button active" onclick="switchTab('bestPractices')">Best Practices 2024</button>
+                        <button class="tab-button" onclick="switchTab('scenarioA')">Merged Team Integration</button>
+                        <button class="tab-button" onclick="switchTab('scenarioB')">Remote Team Transformation</button>
+                        <button class="tab-button" onclick="switchTab('scenarioC')">Startup Team Scaling</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <!-- Best Practices -->
+                        <div id="content-bestPractices" class="tab-pane">
+                            <h3>2024 Team Development Excellence Framework</h3>
+                            <div class="grid-container">
+                                <div class="card">
+                                    <h4>AI-Powered Team Analytics</h4>
+                                    <p>Leveraging machine learning to analyze team dynamics, predict conflicts, and recommend development interventions.</p>
+                                    <div class="highlight-box">
+                                        <strong>Impact:</strong> 45% better team performance predictions with AI analytics.
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <h4>Virtual Team Development</h4>
+                                    <p>Specialized approaches for building trust, communication, and collaboration in distributed and hybrid teams.</p>
+                                    <div class="highlight-box">
+                                        <strong>Impact:</strong> 62% higher engagement in virtual teams with structured development.
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <h4>Neurodiversity Inclusion</h4>
+                                    <p>Creating team environments that leverage diverse cognitive styles and thinking patterns for enhanced innovation.</p>
+                                    <div class="highlight-box">
+                                        <strong>Impact:</strong> 78% higher innovation output in neurodiverse teams.
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <h4>Team Resilience Building</h4>
+                                    <p>Developing team capabilities to withstand stress, recover from setbacks, and adapt to changing conditions.</p>
+                                    <div class="highlight-box">
+                                        <strong>Impact:</strong> 85% better stress management in resilience-trained teams.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Scenario A -->
+                        <div id="content-scenarioA" class="tab-pane" style="display: none;">
+                            <div class="scenario-header">
+                                <div class="scenario-icon">🔄</div>
+                                <div>
+                                    <h3>Post-Merger Team Integration</h3>
+                                    <p style="color: var(--dark-gray);">2 Merged Companies | 45 Team Members | 3 Different Cultures | 6-Month Integration</p>
+                                </div>
+                            </div>
+                            
+                            <div class="scenario-steps">
+                                <div class="step challenge">
+                                    <div class="step-number">1</div>
+                                    <h4>The Challenge</h4>
+                                    <p>Two companies with conflicting cultures, processes, and leadership styles. 45% turnover risk among key talent. Communication breakdowns between teams. Conflicting legacy systems and ways of working.</p>
+                                    <div style="background: rgba(239, 83, 80, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid var(--danger-color);">
+                                        <strong>Critical Issue:</strong> "Us vs. Them" mentality with 65% of employees reporting low trust in merged leadership
+                                    </div>
+                                </div>
+                                
+                                <div class="step application">
+                                    <div class="step-number">2</div>
+                                    <h4>Team Development Strategy</h4>
+                                    <p>Implemented structured integration framework:</p>
+                                    <ul class="custom-list">
+                                        <li><strong>Cultural Bridge Building:</strong> Cross-company working groups and joint problem-solving sessions</li>
+                                        <li><strong>Leadership Alignment:</strong> Unified leadership team with shared objectives and communication</li>
+                                        <li><strong>Team Charter Development:</strong> Co-created team norms, values, and working agreements</li>
+                                        <li><strong>Psychological Safety Focus:</strong> Safe spaces for expressing concerns and building trust</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="step result">
+                                    <div class="step-number">3</div>
+                                    <h4>The Result</h4>
+                                    <p>Successful integration creating a unified high-performance team:</p>
+                                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;">
+                                        <div style="text-align: center; background: rgba(102, 187, 106, 0.1); padding: 20px; border-radius: 8px;">
+                                            <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">92%</div>
+                                            <div>Team Retention Rate</div>
+                                        </div>
+                                        <div style="text-align: center; background: rgba(102, 187, 106, 0.1); padding: 20px; border-radius: 8px;">
+                                            <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">88%</div>
+                                            <div>Trust & Collaboration Score</div>
+                                        </div>
+                                        <div style="text-align: center; background: rgba(102, 187, 106, 0.1); padding: 20px; border-radius: 8px;">
+                                            <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">+35%</div>
+                                            <div>Productivity Increase</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Scenario B -->
+                        <div id="content-scenarioB" class="tab-pane" style="display: none;">
+                            <div class="scenario-header">
+                                <div class="scenario-icon">🌍</div>
+                                <div>
+                                    <h3>Global Remote Team Transformation</h3>
+                                    <p style="color: var(--dark-gray);">8 Time Zones | 5 Countries | 32 Team Members | Hybrid Work Model</p>
+                                </div>
+                            </div>
+                            
+                            <div class="scenario-steps">
+                                <div class="step challenge">
+                                    <div class="step-number">1</div>
+                                    <h4>The Challenge</h4>
+                                    <p>Communication delays across 8 time zones. Cultural misunderstandings and varying work styles. Feelings of isolation and disconnection. Difficulty building trust and relationships virtually.</p>
+                                    <div style="background: rgba(239, 83, 80, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid var(--danger-color);">
+                                        <strong>Complexity:</strong> 42% of team members reported feeling disconnected from team purpose and colleagues
+                                    </div>
+                                </div>
+                                
+                                <div class="step application">
+                                    <div class="step-number">2</div>
+                                    <h4>Team Development Strategy</h4>
+                                    <p>Deployed virtual team excellence framework:</p>
+                                    <ul class="custom-list">
+                                        <li><strong>Virtual Onboarding:</strong> Structured 4-week remote integration program</li>
+                                        <li><strong>Digital Bonding Rituals:</strong> Weekly virtual coffee chats, team building activities</li>
+                                        <li><strong>Communication Protocols:</strong> Clear guidelines for async and sync communication</li>
+                                        <li><strong>Cultural Intelligence Training:</strong> Cross-cultural understanding and adaptation</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="step result">
+                                    <div class="step-number">3</div>
+                                    <h4>The Result</h4>
+                                    <p>High-performing virtual team achieving exceptional results:</p>
+                                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;">
+                                        <div style="text-align: center; background: rgba(102, 187, 106, 0.1); padding: 20px; border-radius: 8px;">
+                                            <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">95%</div>
+                                            <div>Team Satisfaction</div>
+                                        </div>
+                                        <div style="text-align: center; background: rgba(102, 187, 106, 0.1); padding: 20px; border-radius: 8px;">
+                                            <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">3.8x</div>
+                                            <div>Faster Problem Resolution</div>
+                                        </div>
+                                        <div style="text-align: center; background: rgba(102, 187, 106, 0.1); padding: 20px; border-radius: 8px;">
+                                            <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">78%</div>
+                                            <div>Higher Innovation Output</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: Leadership & Coaching -->
+            <section id="leadership" class="leadership-section">
+                <h2>Leadership in Team Development</h2>
+                <p class="lead" style="color: rgba(255, 255, 255, 0.9);">Great teams are built by great leaders. The 2024 Leadership Development Study reveals that leaders who master team development achieve 3.5x better team outcomes and 68% higher employee engagement.</p>
+                
+                <div class="quote">
+                    "The role of a leader is not to create followers, but to create more leaders. Team development is the ultimate leadership multiplier."
+                </div>
+                
+                <div class="grid-container">
+                    <div class="card">
+                        <div class="card-icon">👑</div>
+                        <h4>Servant Leadership</h4>
+                        <p>Focusing on team needs, removing obstacles, and empowering team members to achieve their full potential.</p>
+                        <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <strong>Impact:</strong> Servant-led teams show 45% higher engagement and 32% better performance
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">🎯</div>
+                        <h4>Coaching Leadership</h4>
+                        <p>Developing team capabilities through questioning, feedback, and guided self-discovery rather than directive approaches.</p>
+                        <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <strong>Data:</strong> Coaching leaders develop team capability 2.8x faster than directive leaders
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">🔄</div>
+                        <h4>Adaptive Leadership</h4>
+                        <p>Adjusting leadership style based on team maturity, situational needs, and developmental stage of team members.</p>
+                        <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <strong>Evidence:</strong> Adaptive leaders achieve 71% better team outcomes across diverse situations
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">🌟</div>
+                        <h4>Transformational Leadership</h4>
+                        <p>Inspiring teams to exceed expectations through vision, motivation, and intellectual stimulation.</p>
+                        <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <strong>Strategy:</strong> Transformational leaders create 3.5x more high-performing teams
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Team Leadership Development Framework</h3>
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 12px; margin: 40px 0;">
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;">
+                        <div>
+                            <div style="font-size: 2rem; margin-bottom: 10px;">🎯</div>
+                            <strong>Set Direction</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">Vision & strategy setting</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; margin-bottom: 10px;">🤝</div>
+                            <strong>Build Team</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">Team formation & development</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; margin-bottom: 10px;">🚀</div>
+                            <strong>Empower Performance</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">Enable & support execution</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; margin-bottom: 10px;">📈</div>
+                            <strong>Develop People</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">Coach & mentor growth</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Author Section -->
+            <section id="author" class="author-section">
+                <div class="author-content">
+                    <div class="author-avatar">👨‍💼</div>
+                    <h2 class="author-name">Eng. Ahmed S. AbuAbdu</h2>
+                    <p class="author-title">PMI Authorized Training Partner | Contributor to PMBOK® Guide 8th Edition</p>
+                    <p class="author-experience">13+ Years of Team Leadership | Specialist in High-Performance Team Development & Leadership Coaching</p>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <h4>Professional Email</h4>
+                            <p>ahmedabuabdu90@outlook.com</p>
+                            <small style="opacity: 0.8;">Response within 24 hours</small>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <h4>Direct Contact</h4>
+                            <p>+972 59 981 5677</p>
+                            <small style="opacity: 0.8;">Available on WhatsApp/Telegram</small>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span class="contact-icon">🔗</span>
+                            <h4>Digital Presence</h4>
+                            <p>LinkedIn: Ahmed AbuAbdu</p>
+                            <p>Linktree: linktr.ee/Linktree_3363</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span class="contact-icon">🎓</span>
+                            <h4>Team Development Certifications</h4>
+                            <p>PMI-ATP | PMP | Team Coach Certification</p>
+                            <p>Leadership Development Specialist</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 20px;">Building Tomorrow's High-Performance Teams</h3>
+            <p style="opacity: 0.9; max-width: 600px; margin: 0 auto 30px;">
+                This comprehensive guide synthesizes the latest research from Harvard Business Review, MIT, Google's Project Aristotle, and field experience from global team transformations.
+            </p>
+            
+            <div class="footer-links">
+                <a href="#foundations">Core Foundations</a>
+                <a href="#stages">Development Stages</a>
+                <a href="#scenarios">Case Studies</a>
+                <a href="#leadership">Leadership</a>
+                <a href="#author">Connect</a>
+            </div>
+            
+            <div class="copyright">
+                © 2024 Ahmed S. AbuAbdu. All rights reserved. | Tuckman Model adapted with modern enhancements
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Comprehensive Data Set
+        const pillarsData = {
+            safety: {
+                title: "Psychological Safety",
+                icon: "🎯",
+                desc: `<p>Creating an environment where team members feel safe to take risks, voice opinions, and admit mistakes. Includes:</p>
+                      <ul class="custom-list">
+                          <li>Trust Building & Vulnerability Modeling</li>
+                          <li>Inclusive Communication & Active Listening</li>
+                          <li>Constructive Feedback Culture</li>
+                          <li>Conflict Resolution & Emotional Intelligence</li>
+                      </ul>`,
+                action: "Implement 'Psychological Safety Audits' with anonymous feedback mechanisms. Research shows teams with high psychological safety achieve 2.5x higher learning capacity and 76% better engagement scores."
+            },
+            goals: {
+                title: "Clear Goals & Roles",
+                icon: "🤝",
+                desc: `<p>Establishing shared objectives, defining individual responsibilities, and creating alignment:</p>
+                      <ul class="custom-list">
+                          <li>Shared Vision & Team Charter Development</li>
+                          <li>Role Clarity & Responsibility Mapping</li>
+                          <li>Goal Alignment & Success Metrics</li>
+                          <li>Expectation Management & Accountability</li>
+                      </ul>`,
+                action: "Use 'Team Alignment Workshops' to co-create goals and clarify roles. Teams with clear goals achieve 56% better performance and 42% higher satisfaction."
+            },
+            communication: {
+                title: "Effective Communication",
+                icon: "💬",
+                desc: `<p>Developing transparent information flow, active listening skills, and constructive dialogue:</p>
+                      <ul class="custom-list">
+                          <li>Transparent Information Sharing Practices</li>
+                          <li>Active Listening & Understanding Skills</li>
+                          <li>Constructive Dialogue & Debate Protocols</li>
+                          <li>Feedback Mechanisms & Communication Tools</li>
+                      </ul>`,
+                action: "Implement 'Communication Protocols' with regular feedback loops. Effective communication reduces misunderstandings by 67% and improves decision quality by 45%."
+            },
+            collaboration: {
+                title: "Collaborative Processes",
+                icon: "🔄",
+                desc: `<p>Creating efficient workflows, decision-making frameworks, and problem-solving approaches:</p>
+                      <ul class="custom-list">
+                          <li>Collaborative Decision-Making Frameworks</li>
+                          <li>Problem-Solving Methodologies & Tools</li>
+                          <li>Workflow Optimization & Process Design</li>
+                          <li>Knowledge Sharing & Collective Intelligence</li>
+                      </ul>`,
+                action: "Establish 'Collaborative Rituals' like daily stand-ups and retrospectives. Collaborative teams solve problems 58% faster and generate 42% more innovative solutions."
+            },
+            learning: {
+                title: "Continuous Learning",
+                icon: "📈",
+                desc: `<p>Fostering growth mindset, knowledge sharing, skill development, and adaptation:</p>
+                      <ul class="custom-list">
+                          <li>Learning Culture & Growth Mindset Development</li>
+                          <li>Knowledge Sharing & Cross-Training Programs</li>
+                          <li>Skill Development & Competency Building</li>
+                          <li>Adaptation Mechanisms & Change Management</li>
+                      </ul>`,
+                action: "Create 'Learning Sprints' focused on skill development. Learning-focused teams adapt to change 3.4x faster and maintain 65% higher engagement."
+            }
+        };
+
+        // Chart Initialization
+        function initChart() {
+            const canvas = document.getElementById('pillarsChart');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas dimensions
+            canvas.width = canvas.offsetWidth;
+            canvas.height = 400;
+            
+            // Draw polar area chart manually
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = Math.min(centerX, centerY) - 40;
+            
+            const segments = [
+                { label: "Safety", color: "rgba(255, 112, 67, 0.8)", key: "safety" },
+                { label: "Goals", color: "rgba(21, 101, 192, 0.8)", key: "goals" },
+                { label: "Communication", color: "rgba(66, 165, 245, 0.8)", key: "communication" },
+                { label: "Collaboration", color: "rgba(102, 187, 106, 0.8)", key: "collaboration" },
+                { label: "Learning", color: "rgba(255, 183, 77, 0.8)", key: "learning" }
+            ];
+            
+            // Draw segments
+            const segmentAngle = (2 * Math.PI) / segments.length;
+            
+            segments.forEach((segment, i) => {
+                const startAngle = i * segmentAngle;
+                const endAngle = (i + 1) * segmentAngle;
+                
+                // Draw segment
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+                ctx.closePath();
+                
+                ctx.fillStyle = segment.color;
+                ctx.fill();
+                ctx.strokeStyle = "#ffffff";
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
+                // Add label
+                const labelAngle = startAngle + segmentAngle / 2;
+                const labelRadius = radius + 40;
+                const labelX = centerX + Math.cos(labelAngle) * labelRadius;
+                const labelY = centerY + Math.sin(labelAngle) * labelRadius;
+                
+                ctx.fillStyle = "#1565C0";
+                ctx.font = "bold 14px 'Roboto', sans-serif";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(segment.label, labelX, labelY);
+            });
+            
+            // Add center circle
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 20, 0, 2 * Math.PI);
+            ctx.fillStyle = "#ffffff";
+            ctx.fill();
+            ctx.strokeStyle = "#1565C0";
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Add click events
+            canvas.addEventListener('click', function(event) {
+                const rect = canvas.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+                
+                // Calculate angle from center
+                const dx = x - centerX;
+                const dy = y - centerY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance <= radius) {
+                    const angle = Math.atan2(dy, dx);
+                    const normalizedAngle = angle < 0 ? angle + 2 * Math.PI : angle;
+                    const segmentIndex = Math.floor(normalizedAngle / segmentAngle) % segments.length;
+                    
+                    updateDetail(segments[segmentIndex].key);
+                }
+            });
+            
+            // Add hover effect
+            canvas.addEventListener('mousemove', function(event) {
+                const rect = canvas.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+                
+                const dx = x - centerX;
+                const dy = y - centerY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                canvas.style.cursor = distance <= radius ? 'pointer' : 'default';
+            });
+        }
+
+        // Update Component Detail
+        function updateDetail(key) {
+            const data = pillarsData[key];
+            const container = document.getElementById('componentDetail');
+            
+            // Add animation
+            container.style.opacity = '0.5';
+            container.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                document.getElementById('compIcon').textContent = data.icon;
+                document.getElementById('compTitle').textContent = data.title;
+                document.getElementById('compDesc').innerHTML = data.desc;
+                document.getElementById('compAction').textContent = data.action;
+                
+                container.style.opacity = '1';
+                
+                // Add highlight animation
+                container.style.animation = 'none';
+                setTimeout(() => {
+                    container.style.animation = 'pulse 0.5s';
+                }, 10);
+            }, 300);
+        }
+
+        // Tab Switching
+        function switchTab(tabName) {
+            // Update tab buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            event.target.classList.add('active');
+            
+            // Update tab content
+            const panes = document.querySelectorAll('.tab-pane');
+            panes.forEach(pane => {
+                pane.style.display = 'none';
+            });
+            
+            document.getElementById('content-' + tabName).style.display = 'block';
+        }
+
+        // Navigation Active State
+        function updateNavActive() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize chart
+            initChart();
+            
+            // Set initial tab
+            switchTab('bestPractices');
+            
+            // Update nav on scroll
+            window.addEventListener('scroll', updateNavActive);
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add CSS animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes pulse {
+                    0% { box-shadow: 0 0 0 0 rgba(255, 112, 67, 0.4); }
+                    70% { box-shadow: 0 0 0 10px rgba(255, 112, 67, 0); }
+                    100% { box-shadow: 0 0 0 0 rgba(255, 112, 67, 0); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            initChart();
+        });
+    </script>
+</body>
+</html>

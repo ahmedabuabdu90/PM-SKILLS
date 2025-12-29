@@ -1,0 +1,665 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Expanding Focus &amp; Alignment in Project Management</title>
+<link href="https://us-tiangong-data.oss-accelerate.aliyuncs.com/doc/gemini_css/table.css?OSSAccessKeyId=LTAI5tGmBYBVtG6Cxb4BaviJ&amp;Expires=4914044665&amp;Signature=X%2F%2BipJztge3UJ3Ojq5wcxRk%2F7zk%3D" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet"/>
+<link href="https://us-tiangong-data.oss-accelerate.aliyuncs.com/doc/new_color_css/blue_v2.css?OSSAccessKeyId=LTAI5tGmBYBVtG6Cxb4BaviJ&amp;Expires=33299356499&amp;Signature=YGVaTE9YLO97otxLx%2FGBU8pQEr4%3D" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://us-tiangong-data.oss-accelerate.aliyuncs.com/doc/css_ans_js/macarons.js?OSSAccessKeyId=LTAI5tGmBYBVtG6Cxb4BaviJ&amp;Expires=4912738769&amp;Signature=gR5ZiVxw6PRq8chCT8htIYqZRfo%3D"></script>
+<style>.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px 40px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    }
+.chart-container {
+    position: relative;
+    margin: 3em auto;
+    max-width: 700px;
+    min-height: 200px;
+    max-height: 400px;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    }
+img {
+    display: block;
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 280px;
+    margin: 1em auto;
+    border-radius: 8px;
+    }
+h4 {
+    font-size: 18px;
+    }
+h5 {
+    font-size: 16px;
+    }
+body {
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    margin: 0 24px 0 24px;
+    padding: 0;
+    font-size: 16px;
+    max-width: None;
+    }
+h1, h2, h3 {
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+    margin-top: 24px;
+    font-size: 28px;
+    margin-bottom: 20px;
+    }
+h1 {
+    font-size: 28px;
+    text-align: center;
+    border-bottom: none;
+    margin-bottom: 20px;
+    margin-top: 24px;
+    }
+.subtitle {
+    text-align: center;
+    font-size: 1.1em;
+    color: #5a6773;
+    margin-top: -10px;
+    margin-bottom: 30px;
+    }
+.section {
+    margin-bottom: 25px;
+    }
+.highlight-box {
+    background-color: #e7f3ff;
+    border-left: 5px solid #007bff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    }
+.highlight-box.conflict {
+    background-color: #fff3cd;
+    border-left-color: #ffc107;
+    }
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    }
+ul li {
+    background: url("data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"%23007bff\" class=\"bi bi-check-circle-fill\" viewBox=\"0 0 16 16\"><path d=\"M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z\"/></svg>") no-repeat left 5px;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    }
+a {
+    text-decoration: none;
+    }
+a:hover {
+    text-decoration: underline;
+    }
+.author-section {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f1f3f5;
+    border-radius: 8px;
+    text-align: center;
+    }
+.author-section h3 {
+    border-bottom: none;
+    margin-top: 0;
+    }
+.author-section p {
+    margin: 5px 0;
+    color: #495057;
+    }
+.author-section .contact-info {
+    margin-top: 15px;
+    font-size: 0.9em;
+    }
+.author-section .contact-info a {
+    margin: 0 10px;
+    }
+.tag {
+    display: inline-block;
+    background-color: #dee2e6;
+    color: #495057;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    margin: 2px;
+    }
+.key-components-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    }
+.component-card {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #e9ecef;
+    }
+.component-card h3 {
+    font-size: 1.1em;
+    margin-top: 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ced4da;
+    }
+@media only screen and (max-device-width: 768px) {
+            body {
+                padding: 0;
+                margin: 0;
+                font-size: 15px;
+                line-height: 1.5;
+            }
+
+            .container {
+                padding: 0;
+                margin: 16px 20px 30px;
+                box-shadow: none;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4 {
+            }
+
+            h1 {
+                font-size: 1.87em;
+                line-height: 1.6;
+                margin-bottom: 0.5em;
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 1.6em;
+                font-weight: 600;
+                margin-top: 1.3em;
+                margin-bottom: 0.8em;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 0.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                font-weight: 600;
+                margin-top: 1em;
+                margin-bottom: 0.6em;
+            }
+
+            h4 {
+                font-size: 1.1em;
+                font-weight: 500;
+                margin-top: 1em;
+                margin-bottom: 0.5em;
+                font-style: normal;
+            }
+
+            h5 {
+                font-size: 1em;
+                font-weight: 500;
+                margin-bottom: 1.2em;
+            }
+
+            ul,
+            ol {
+                font-size: 1em; /* Equivalent to 17.6px if base is 16px */
+                font-weight: 400;
+                margin-bottom: 1.2em;
+                line-height: 1.8;
+            }
+
+            p {
+                font-size: 1em;
+                line-height: 1.8; /* Equivalent to 17.6px if base is 16px */
+                font-weight: 400;
+                margin-top: 0.8em;
+                margin-bottom: 0.8em;
+            }
+
+            blockquote {
+                padding: 1em 1.2em;
+
+            p {
+                margin: 0;
+            }
+        }
+
+        figcaption {
+            margin-top: 0.5em;
+            font-size: 0.8em; /* Equivalent to 17.6px if base is 16px */
+            font-weight: 400;
+            text-align: center;
+            font-style: normal;
+            color: #7F8896;
+        }
+
+        img {
+            display: block;
+            overflow: hidden;
+            max-width: 100%;
+            max-height: 335px;
+            margin: 1em auto;
+            border-radius: 8px;
+        }
+        }</style>
+<link rel="stylesheet" href="https://static.skywork.ai/fe/skywork-site-assets/styles/doc_reference_style.css?v=2005480682030821388"/></head>
+<body>
+<div class="container">
+<h1 id="section-1">Expanding Focus &amp; Alignment</h1>
+<p class="subtitle">A Modern Imperative for Project Management Professionals</p>
+<div class="section" id="definition">
+<h2 id="section-1">Definition: Beyond Tactical Execution</h2>
+<p>
+<strong>Expanding Focus and Alignment</strong> is the strategic evolution of project management from a purely tactical discipline focused on outputs (scope, time, cost) to a holistic, value-driven practice. It emphasizes ensuring that every project directly contributes to the organization&#39;s overarching strategic objectives, creating measurable value, and adapting to the complex interplay of internal and external systems.
+            </p>
+<div class="highlight-box">
+<p>
+                    This shift is critical because projects that are executed perfectly but are misaligned with strategy can still fail to deliver meaningful business results. As noted by the <a href="https://www.pmi.org/learning/library/align-project-management-organizational-strategy-7393" target="_blank">Project Management Institute (PMI)</a>, a good project should reflect not only tactical excellence but also strategic importance. Expanding focus and alignment bridges the common gap between executive strategy and project execution.
+                </p>
+</div>
+</div>
+<div class="section" id="components">
+<h2 id="section-2">Key Components</h2>
+<p>Mastering this skill requires integrating several core components into the project lifecycle, reflecting the latest guidance from standards like the <a href="https://projectmanagementacademy.net/resources/blog/what-is-pmbok-8/" target="_blank">PMBOK® Guide – Eighth Edition</a>.</p>
+<div class="key-components-grid">
+<div class="component-card">
+<h3 id="section-2-1">1. Strategic Alignment</h3>
+<p>The foundational practice of connecting project goals with organizational strategy. This involves using tools like the Balanced Scorecard and Project Portfolio Management (PPM) to select, prioritize, and fund projects that offer the highest strategic value. The goal is to move from a collection of desired projects to a focused portfolio that drives strategic goals forward.</p>
+</div>
+<div class="component-card">
+<h3 id="section-2-2">2. Systems Thinking &amp; Holistic View</h3>
+<p>A core principle of PMBOK® 8, this involves understanding that a project is part of a larger, interconnected system. Decisions must consider impacts on the wider organization, market, and environment. This mindset helps project managers <a href="https://www.pmi.org/learning/thought-leadership/systems-thinking-and-project-outcomes" target="_blank">anticipate unintended consequences</a> and identify high-leverage points for effective change.</p>
+</div>
+<div class="component-card">
+<h3 id="section-2-3">3. Value-Driven Focus</h3>
+<p>Success is measured by the outcomes and value delivered to stakeholders, not just by completing tasks. This requires a shift from focusing on outputs to ensuring the project creates benefits that justify the investment. PMBOK® 8 strongly emphasizes that <a href="https://hksmnow.com/project-management/project-management/pmbok-7-vs-pmbok-8-comprehensive-comparison-report/" target="_blank">value delivery and benefits realization</a> are paramount.</p>
+</div>
+<div class="component-card">
+<h3 id="section-2-4">4. Enhanced Stakeholder Engagement</h3>
+<p>Moving beyond simple communication to active collaboration. This includes analyzing stakeholder influence and interest, developing tailored engagement plans, and establishing clear feedback loops. The goal is to build consensus, manage expectations proactively, and ensure all key parties are aligned throughout the project lifecycle.</p>
+</div>
+<div class="component-card">
+<h3 id="section-2-5">5. Adaptive Planning &amp; Execution</h3>
+<p>Recognizing that no single methodology fits all projects. This component involves selecting and tailoring the right approach—be it predictive (Waterfall), adaptive (Agile), or hybrid. Frameworks like <a href="https://scrumguides.org/scrum-guide.html" target="_blank">Scrum</a> and <a href="https://www.atlassian.com/agile/kanban" target="_blank">Kanban</a> provide the flexibility to respond to change while maintaining focus on the Sprint Goal or continuous flow, ensuring alignment is maintained even in dynamic environments.</p>
+</div>
+<div class="component-card">
+<h3 id="section-2-6">6. Performance Measurement with KPIs</h3>
+<p>Using Key Performance Indicators (KPIs) that measure strategic contribution, not just operational efficiency. While traditional metrics (On-Time Completion, Budget vs. Actual) are important, a broader focus includes KPIs like <a href="https://www.accelo.com/project-management/project-portfolio-management-kpis" target="_blank">Strategic Alignment Index</a>, Stakeholder Satisfaction, and Benefits Realization to provide a true picture of project value.</p>
+</div>
+</div>
+</div>
+<div class="section" id="importance">
+<h2 id="section-3">Importance: The Strategic Advantage</h2>
+<p>Effective focus and alignment transform the project manager&#39;s role from a task coordinator to a strategic leader. The benefits are significant:</p>
+<ul>
+<li><strong>Ensures Project Success:</strong> Aligned projects are more likely to receive sustained executive support, adequate resources, and achieve their intended business outcomes.</li>
+<li><strong>Optimizes Resource Allocation:</strong> By focusing on high-value initiatives, organizations avoid wasting resources on projects that don&#39;t contribute to strategic goals, as highlighted in <a href="https://www.pmi.org/learning/library/project-portfolio-management-limited-resources-6948" target="_blank">PPM principles</a>.</li>
+<li><strong>Increases Team Motivation:</strong> When team members understand how their work connects to the bigger picture, it fosters a sense of purpose and boosts engagement and accountability.</li>
+<li><strong>Enhances Organizational Agility:</strong> A culture of alignment and systems thinking allows organizations to respond more effectively to market shifts, technological changes, and competitive threats.</li>
+</ul>
+</div>
+<div class="section" id="practices">
+<h2 id="section-4">Best Practices for Application</h2>
+<p>Developing and applying this skill involves a combination of mindset, process, and tools:</p>
+<ul>
+<li><strong>Master Goal-Setting Frameworks:</strong> Use frameworks like <a href="https://teamflect.com/blog/performance-management/smart-goals-vs-okrs" target="_blank">OKRs (Objectives and Key Results)</a> for strategic alignment and SMART goals for tactical execution. OKRs define ambitious outcomes, while SMART goals create clear, actionable steps for individuals.</li>
+<li><strong>Utilize Visual Management Tools:</strong> Employ Kanban boards and project dashboards to create transparency. Tools like <a href="https://www.atlassian.com/software/jira" target="_blank">Jira</a> and Confluence help visualize workflows and connect daily tasks to strategic goals.</li>
+<li><strong>Conduct Regular Alignment Reviews:</strong> Implement regular check-ins (e.g., quarterly business reviews, sprint reviews) to assess progress against strategic objectives and adapt plans as needed.</li>
+<li><strong>Adopt a &#34;Pre-Mortem&#34; Analysis:</strong> Before a project starts, gather the team to brainstorm all the ways it could fail. This <a href="https://www.proprofsproject.com/blog/project-management-best-practices/" target="_blank">proactive risk identification</a> helps ensure alignment and preparedness from day one.</li>
+<li><strong>Leverage AI and Predictive Analytics:</strong> Modern tools use AI to forecast delays, identify resource conflicts, and provide data-driven recommendations, enabling proactive decision-making to maintain alignment.</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2 id="section-5">Real-World Scenarios &amp; Case Studies</h2>
+<p>The application of expanded focus and alignment is evident in numerous successful projects:</p>
+<ul>
+<li><strong>Digital Transformation at Starbucks:</strong> The rollout of mobile ordering required tight alignment between technology, marketing, and in-store operations. By focusing on the strategic goal of enhancing customer convenience, the project succeeded in creating a seamless user experience that drove significant revenue growth.</li>
+<li><strong>PMO Implementation and Evolution:</strong> A <a href="https://www.pmi.org/learning/library/pmo-alignment-organizational-needs-10164" target="_blank">case study from PMI</a> shows a new PMO that initially focused on project prioritization. However, after aligning with senior leadership&#39;s true priority—effective execution of strategic projects—the PMO shifted its focus, led key projects, and demonstrated immense value, which allowed it to grow and later re-introduce standardized processes.</li>
+<li><strong>Infrastructure Restoration in British Columbia:</strong> After catastrophic floods, the Ministry of Transportation and Infrastructure used a PMBOK® Guide-based approach to restore a critical highway. By aligning all efforts on the strategic priority of reconnecting the corridor, they reopened it in just 35 days despite immense challenges, demonstrating flexibility and collaboration.</li>
+</ul>
+</div>
+<div class="section" id="conflict-zones">
+<div class="highlight-box conflict">
+<h3 id="section-5-1">Special Focus: Alignment in Conflict-Affected &amp; High-Stress Regions</h3>
+<p>
+                    In fragile and conflict-affected situations (FCS) like Gaza, Syria, or Sudan, project management transcends traditional frameworks. Here, &#34;Expanding Focus &amp; Alignment&#34; means aligning with the most fundamental human needs while navigating extreme uncertainty. The strategic goal shifts from profit or market share to survival, resilience, and humanitarian impact.
+                </p>
+<p>
+                    Project managers must employ <strong>adaptive management</strong>, an intentional approach to making decisions in response to new information and a rapidly changing context. As noted in research on aid in fragile settings, this requires a &#34;project compass&#34; rather than a rigid map. Key strategies include:
+                </p>
+<ul>
+<li><strong>Conflict-Sensitive Planning:</strong> Projects must be designed to &#34;do no harm&#34; by understanding local power dynamics, resource competition, and social tensions. This involves continuous <a href="https://www.undp.org/sites/g/files/zskgke326/files/2024-10/conflict_sensitivity_and_monitoring_evaluation_toolbox-en.pdf" target="_blank">context and conflict analysis</a> to ensure aid does not inadvertently exacerbate conflict.</li>
+<li><strong>Hyper-Flexible Execution:</strong> Methodologies must be highly adaptive. A project to rebuild infrastructure, as seen in post-conflict case studies, might need to pivot overnight due to security risks or supply chain collapse. The focus is on achieving the core objective (e.g., providing shelter) through whatever means are currently viable.</li>
+<li><strong>Building Social &amp; Team Resilience:</strong> In environments where physical infrastructure is destroyed, <a href="https://www.wilsoncenter.org/blog-post/planning-resilience-and-after-conflict-world-away" target="_blank">social cohesion is the primary asset</a>. Projects must empower local communities and build trust. For the project team, maintaining morale is a strategic objective, requiring leaders to foster psychological safety and a shared sense of purpose amidst trauma and stress.</li>
+<li><strong>Focus on Micro-Wins and Core Functions:</strong> With long-term goals uncertain, alignment focuses on immediate, life-sustaining outcomes. Celebrating small successes—like restoring a single water pump or delivering one shipment of medical supplies—is crucial for maintaining momentum and hope.</li>
+</ul>
+<p>
+                    In these contexts, alignment is not with a corporate strategy document, but with the principles of humanity, resilience, and adaptability.
+                </p>
+</div>
+</div>
+<div class="author-section">
+<h3 id="section-5-2">Eng. Ahmed S. AbuAbdu</h3>
+<p>
+<span class="tag">PMI Authorized Trainer</span>
+<span class="tag">Contributor to PMBOK® Guide 8th Edition</span>
+<span class="tag">13+ Years of Project Management Excellence</span>
+</p>
+<div class="contact-info">
+<a href="mailto:ahmedabuabdu90@outlook.com">Email</a> |
+                <a href="https://wa.me/972599815677" target="_blank">WhatsApp</a> |
+                <a href="https://linktr.ee/ahmedsabuabdu" target="_blank">Linktree</a>
+</div>
+</div>
+<div class="reference-container">
+			<div class="reference-section">
+				<h3 class="reference-title">Reference</h3>
+				<div class="reference-list">
+					
+					<div class="reference-item">
+						<span class="reference-number">[1]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Best 20 Organizational Alignment Examples</span>
+									
+							</div>
+							<a href="https://www.getjop.com/blog/organizational-alignment-examples" class="reference-link" target="_blank">
+								https://www.getjop.com/blog/organizational-alignment-examples
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[2]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">PMBOK Best Practices for Project Managers &amp; PMOs</span>
+									
+							</div>
+							<a href="https://oneplan.ai/articles/pmbok-best-practices-for-project-managers-pmos/" class="reference-link" target="_blank">
+								https://oneplan.ai/articles/pmbok-best-practices-for-project-managers-pmos/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[3]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">PMBOK Guide | Project Management Institute</span>
+									
+							</div>
+							<a href="https://www.pmi.org/standards/pmbok" class="reference-link" target="_blank">
+								https://www.pmi.org/standards/pmbok
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[4]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Agile project management</span>
+									
+							</div>
+							<a href="https://www.atlassian.com/agile/project-management" class="reference-link" target="_blank">
+								https://www.atlassian.com/agile/project-management
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[5]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">10 PMO KPIs: Essential Metrics to Drive Project Portfolio ...</span>
+									
+							</div>
+							<a href="https://www.epicflow.com/blog/pmo-kpis/" class="reference-link" target="_blank">
+								https://www.epicflow.com/blog/pmo-kpis/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[6]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Kanban For Team Alignment Strategies</span>
+									
+							</div>
+							<a href="https://www.meegle.com/en_us/topics/kanban-method/kanban-for-team-alignment-strategies" class="reference-link" target="_blank">
+								https://www.meegle.com/en_us/topics/kanban-method/kanban-for-team-alignment-strategies
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[7]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Case Studies</span>
+									
+							</div>
+							<a href="https://www.pmi.org/business-solutions/case-studies" class="reference-link" target="_blank">
+								https://www.pmi.org/business-solutions/case-studies
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[8]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">What is adaptive project management?</span>
+									
+							</div>
+							<a href="https://www.mural.co/blog/what-is-adaptive-project-management" class="reference-link" target="_blank">
+								https://www.mural.co/blog/what-is-adaptive-project-management
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[9]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">PMBOK® Seventh Edition Principles and Risk Management</span>
+									
+							</div>
+							<a href="https://projectriskcoach.com/pmbok-seventh-edition-principles-and-risk-management/" class="reference-link" target="_blank">
+								https://projectriskcoach.com/pmbok-seventh-edition-principles-and-risk-management/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[10]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">PMBOK 7 vs PMBOK 8 Comprehensive Comparison Report</span>
+									
+							</div>
+							<a href="https://hksmnow.com/project-management/project-management/pmbok-7-vs-pmbok-8-comprehensive-comparison-report/" class="reference-link" target="_blank">
+								https://hksmnow.com/project-management/project-management/pmbok-7-vs-pmbok-8-comprehensive-comparison-report/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[11]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Conflict Sensitivity and Monitoring &amp; Evaluation Toolbox</span>
+									
+							</div>
+							<a href="https://www.undp.org/sites/g/files/zskgke326/files/2024-10/conflict_sensitivity_and_monitoring_evaluation_toolbox-en.pdf" class="reference-link" target="_blank">
+								https://www.undp.org/sites/g/files/zskgke326/files/2024-10/conflict_sensitivity_and_monitoring_evaluation_toolbox-en.pdf
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[12]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">What Is PMBOK® 8? Key Updates for 2026 Explained</span>
+									
+							</div>
+							<a href="https://projectmanagementacademy.net/resources/blog/what-is-pmbok-8/" class="reference-link" target="_blank">
+								https://projectmanagementacademy.net/resources/blog/what-is-pmbok-8/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[13]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Systems Thinking Boosts Project Outcomes</span>
+									
+							</div>
+							<a href="https://www.pmi.org/learning/thought-leadership/systems-thinking-and-project-outcomes" class="reference-link" target="_blank">
+								https://www.pmi.org/learning/thought-leadership/systems-thinking-and-project-outcomes
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[14]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Planning for Resilience In and After Conflict—A World Away</span>
+									
+							</div>
+							<a href="https://www.wilsoncenter.org/blog-post/planning-resilience-and-after-conflict-world-away" class="reference-link" target="_blank">
+								https://www.wilsoncenter.org/blog-post/planning-resilience-and-after-conflict-world-away
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[15]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Real-Life Examples of How to Ensure PMO Alignment with ...</span>
+									
+							</div>
+							<a href="https://www.pmi.org/learning/library/pmo-alignment-organizational-needs-10164" class="reference-link" target="_blank">
+								https://www.pmi.org/learning/library/pmo-alignment-organizational-needs-10164
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[16]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">35 Project Portfolio Management KPIs for Tracking ...</span>
+									
+							</div>
+							<a href="https://www.accelo.com/project-management/project-portfolio-management-kpis" class="reference-link" target="_blank">
+								https://www.accelo.com/project-management/project-portfolio-management-kpis
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[17]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">10 Best Project Management Practices to Follow in 2025</span>
+									
+							</div>
+							<a href="https://www.proprofsproject.com/blog/project-management-best-practices/" class="reference-link" target="_blank">
+								https://www.proprofsproject.com/blog/project-management-best-practices/
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[18]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Kanban</span>
+									
+							</div>
+							<a href="https://www.atlassian.com/agile/kanban" class="reference-link" target="_blank">
+								https://www.atlassian.com/agile/kanban
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[19]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Smart Goals vs OKR: Differences, Best Practices and ...</span>
+									
+							</div>
+							<a href="https://teamflect.com/blog/performance-management/smart-goals-vs-okrs" class="reference-link" target="_blank">
+								https://teamflect.com/blog/performance-management/smart-goals-vs-okrs
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[20]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Jira | Issue &amp; Project Tracking Software</span>
+									
+							</div>
+							<a href="https://www.atlassian.com/software/jira" class="reference-link" target="_blank">
+								https://www.atlassian.com/software/jira
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[21]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Align project management with organizational strategy</span>
+									
+							</div>
+							<a href="https://www.pmi.org/learning/library/align-project-management-organizational-strategy-7393" class="reference-link" target="_blank">
+								https://www.pmi.org/learning/library/align-project-management-organizational-strategy-7393
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[22]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">Project portfolio management</span>
+									
+							</div>
+							<a href="https://www.pmi.org/learning/library/project-portfolio-management-limited-resources-6948" class="reference-link" target="_blank">
+								https://www.pmi.org/learning/library/project-portfolio-management-limited-resources-6948
+							</a>
+						</div>
+					</div>
+					
+					<div class="reference-item">
+						<span class="reference-number">[23]</span>
+						<div class="reference-content">
+							<div class="reference-text-container">
+								<span class="reference-text">The 2020 Scrum Guide TM</span>
+									
+							</div>
+							<a href="https://scrumguides.org/scrum-guide.html" class="reference-link" target="_blank">
+								https://scrumguides.org/scrum-guide.html
+							</a>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div></div>
+
+</body></html>

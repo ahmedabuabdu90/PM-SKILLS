@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Planning & Project Design: The Architecture of Success</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700;800&display=swap');
+
+        :root {
+            --primary-color: #2c3e50; /* Professional Dark Blue */
+            --secondary-color: #3498db; /* Blue */
+            --accent-color: #2ecc71; /* Emerald Green */
+            --success-color: #27ae60; /* Green */
+            --warning-color: #f39c12; /* Orange */
+            --danger-color: #e74c3c; /* Red */
+            --text-color: #34495e;
+            --light-bg: #ecf0f1;
+            --medium-gray: #bdc3c7;
+            --dark-gray: #7f8c8d;
+            --white: #ffffff;
+            --font-main: 'Roboto', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.8;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1a252f 100%);
+            color: var(--white);
+            padding: 120px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(46, 204, 113, 0.15) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3.8rem;
+            margin: 0 0 20px;
+            line-height: 1.3;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            font-weight: 300;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        /* Main Sections */
+        section {
+            margin-bottom: 80px;
+            padding: 60px 40px;
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--accent-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+            border-radius: 16px 16px 0 0;
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin: 0 0 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--accent-color);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        h3 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin: 40px 0 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        h4 {
+            font-family: var(--font-main);
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+            padding-left: 15px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        p {
+            font-size: 1.15rem;
+            color: var(--dark-gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .lead {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--primary-color);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(46, 204, 113, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* Chart Section */
+        .chart-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin: 50px 0;
+        }
+
+        .chart-container {
+            background: var(--light-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border: 2px solid rgba(46, 204, 113, 0.1);
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+
+        /* Component Detail */
+        .component-detail {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border: 2px solid rgba(46, 204, 113, 0.1);
+        }
+
+        .component-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .component-icon {
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .component-title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .practical-tip {
+            background-color: rgba(46, 204, 113, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 25px;
+            margin-top: 30px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .practical-tip::before {
+            content: '💡';
+            position: absolute;
+            left: -15px;
+            top: -15px;
+            background: var(--accent-color);
+            color: var(--white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        /* Grid Layouts */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        /* Tabs */
+        .tab-container {
+            margin: 50px 0;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-button {
+            padding: 15px 35px;
+            background-color: var(--light-bg);
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-main);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--dark-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .tab-button.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(44, 62, 80, 0.3);
+        }
+
+        .tab-button:hover:not(.active) {
+            background-color: var(--medium-gray);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .tab-content {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border: 1px solid var(--medium-gray);
+            min-height: 400px;
+        }
+
+        /* Scenarios */
+        .scenario-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--medium-gray);
+        }
+
+        .scenario-icon {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .scenario-steps {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .scenario-steps::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--accent-color), var(--primary-color));
+        }
+
+        .step {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--light-bg);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            position: absolute;
+            left: -55px;
+            top: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            box-shadow: 0 6px 15px rgba(46, 204, 113, 0.4);
+            font-family: var(--font-heading);
+        }
+
+        .step.challenge .step-number {
+            background-color: var(--danger-color);
+        }
+
+        .step.application .step-number {
+            background-color: var(--warning-color);
+        }
+
+        .step.result .step-number {
+            background-color: var(--success-color);
+        }
+
+        /* Tools Section */
+        .tools-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: var(--white);
+            border-left-color: var(--secondary-color);
+        }
+
+        .tools-section h2 {
+            color: var(--white);
+            border-bottom-color: var(--secondary-color);
+        }
+
+        .tools-section h3 {
+            color: var(--accent-color);
+        }
+
+        .tools-section .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-top-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .tools-section .card:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            border-left: 4px solid var(--accent-color);
+            background: rgba(46, 204, 113, 0.1);
+            border-radius: 10px;
+        }
+
+        /* Author Section */
+        .author-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #2c3e50 100%);
+            color: var(--white);
+            padding: 80px 40px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .author-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(46, 204, 113, 0.2) 0%, transparent 50%);
+        }
+
+        .author-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .author-avatar {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .author-name {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            margin: 0 0 10px;
+            color: var(--white);
+        }
+
+        .author-title {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            margin: 0 0 20px;
+            font-weight: 500;
+        }
+
+        .author-experience {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .chart-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            section {
+                padding: 40px 25px;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+            
+            h3 {
+                font-size: 2rem;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .tab-button {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .hero {
+                padding: 100px 15px 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 30px 20px;
+            }
+            
+            .stats {
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .author-name {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Custom Lists */
+        ul.custom-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul.custom-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        ul.custom-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            width: 25px;
+            height: 25px;
+            background-color: rgba(46, 204, 113, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Additional Effects */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(44, 62, 80, 0.1));
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+            margin: 20px 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .stat-box .number {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-box .label {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            margin-top: 5px;
+        }
+
+        /* Planning Framework Table */
+        .framework-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .framework-table th {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .framework-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .framework-table tr:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+
+        .framework-table tr:hover {
+            background-color: rgba(46, 204, 113, 0.05);
+        }
+
+        /* Methodology Highlight */
+        .methodology-highlight {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(44, 62, 80, 0.1));
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--secondary-color);
+            margin: 20px 0;
+        }
+
+        /* Project Timeline */
+        .timeline {
+            position: relative;
+            max-width: 100%;
+            margin: 40px auto;
+            padding: 20px 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--accent-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            border-left-color: var(--secondary-color);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            border-left-color: var(--warning-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span>📐</span>
+                Strategic Planning
+            </a>
+            <div class="nav-links">
+                <a href="#foundations" class="active">Core Foundations</a>
+                <a href="#methodologies">Planning Methodologies</a>
+                <a href="#scenarios">Real-World Applications</a>
+                <a href="#tools">Digital Tools & AI</a>
+                <a href="#author">Expert Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="badge">PMI Standards | Design Thinking | Agile Planning 2024</div>
+            <h1>Strategic Planning & Project Design</h1>
+            <p class="hero-subtitle">Architecting Success: Advanced frameworks for transforming vision into executable strategy, optimizing resources, and delivering exceptional project outcomes in complex environments</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">89%</span>
+                    <span class="stat-label">Project Success Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">45%</span>
+                    <span class="stat-label">Cost Reduction</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3.2x</span>
+                    <span class="stat-label">ROI Improvement</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <!-- SECTION 1: Core Foundations -->
+            <section id="foundations">
+                <h2>The Five Pillars of Strategic Planning</h2>
+                <p class="lead">According to PMI 2024 research, organizations with mature planning capabilities achieve 89% project success rates, deliver 45% under budget, and realize 3.2x higher ROI through systematic planning frameworks.</p>
+                
+                <div class="chart-section">
+                    <div class="chart-container">
+                        <div class="chart-wrapper">
+                            <canvas id="pillarsChart"></canvas>
+                        </div>
+                        <p style="text-align: center; margin-top: 20px; color: var(--dark-gray); font-style: italic;">Click any segment to explore detailed insights</p>
+                    </div>
+                    
+                    <div class="component-detail" id="componentDetail">
+                        <div class="component-header">
+                            <div class="component-icon" id="compIcon">🎯</div>
+                            <div>
+                                <h3 class="component-title" id="compTitle">Strategic Alignment</h3>
+                                <p style="color: var(--accent-color); font-weight: 500;">Connecting Projects to Organizational Vision</p>
+                            </div>
+                        </div>
+                        
+                        <div id="compDesc">
+                            <p>Ensuring every project directly supports business objectives and creates measurable value. Includes:</p>
+                            <ul class="custom-list">
+                                <li>Business Case Development & Value Proposition</li>
+                                <li>Stakeholder Analysis & Expectation Management</li>
+                                <li>Strategic Objective Mapping (OKRs/KPIs)</li>
+                                <li>Portfolio Optimization & Resource Allocation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="practical-tip">
+                            <strong>Strategic Application in Enterprise Planning:</strong>
+                            <p id="compAction">Develop a "Strategic Alignment Matrix" connecting projects to corporate objectives with clear success metrics. Research shows aligned projects deliver 67% higher business value and achieve 89% stakeholder satisfaction.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-container">
+                    <div class="card">
+                        <div class="card-icon">📊</div>
+                        <h4>Risk-Intelligent Planning</h4>
+                        <p>Proactive identification, analysis, and mitigation of uncertainties. Includes quantitative risk analysis, contingency planning, and resilience engineering.</p>
+                        <div class="highlight-box">
+                            <strong>2024 Data:</strong> Risk-intelligent planning reduces project failures by 72% and cost overruns by 58%.
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">🔄</div>
+                        <h4>Adaptive Design Thinking</h4>
+                        <p>Human-centered approach to project design focusing on empathy, iteration, and user validation throughout the project lifecycle.</p>
+                        <div class="highlight-box">
+                            <strong>Impact:</strong> Design-led projects achieve 3.5x higher user adoption and 42% faster implementation.
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">⚡</div>
+                        <h4>Agile Planning Frameworks</h4>
+                        <p>Flexible, iterative planning approaches that respond to change while maintaining strategic direction and value delivery.</p>
+                        <div class="highlight-box">
+                            <strong>Research Findings:</strong> Agile planning reduces time-to-market by 45% and increases customer satisfaction by 68%.
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">🤖</div>
+                        <h4>Data-Driven Decision Making</h4>
+                        <p>Leveraging analytics, predictive modeling, and AI to inform planning decisions and optimize project outcomes.</p>
+                        <div class="highlight-box">
+                            <strong>Business Impact:</strong> Data-driven planning improves forecast accuracy by 76% and resource utilization by 52%.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: Planning Methodologies -->
+            <section id="methodologies">
+                <h2>Advanced Planning Frameworks & Methodologies</h2>
+                <p class="lead">Modern planning transcends traditional Gantt charts. The 2024 PMI Pulse reveals that hybrid planning approaches combining predictive and adaptive methods deliver 2.8x better outcomes than traditional methodologies.</p>
+                
+                <div class="grid-container">
+                    <div class="card">
+                        <div class="card-icon">🏗️</div>
+                        <h4>Predictive (Waterfall) Planning</h4>
+                        <p>Sequential, phase-gate approach ideal for projects with clear requirements, stable scope, and predictable outcomes.</p>
+                        <div class="methodology-highlight">
+                            <strong>Best For:</strong> Construction, Manufacturing, Regulatory Projects with fixed requirements.
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">🔄</div>
+                        <h4>Adaptive (Agile) Planning</h4>
+                        <p>Iterative, incremental approach embracing change and focusing on delivering value through short cycles.</p>
+                        <div class="stat-box">
+                            <span class="number">2.8x</span>
+                            <span class="label">Better Outcomes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">🔀</div>
+                        <h4>Hybrid Planning Approach</h4>
+                        <p>Combining predictive structure with adaptive flexibility to balance control with responsiveness.</p>
+                        <div class="stat-box">
+                            <span class="number">67%</span>
+                            <span class="label">Adoption Rate 2024</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Planning Methodology Selection Matrix</h3>
+                <table class="framework-table">
+                    <thead>
+                        <tr>
+                            <th>Methodology</th>
+                            <th>Project Characteristics</th>
+                            <th>Key Techniques</th>
+                            <th>Success Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Predictive</strong></td>
+                            <td>Clear requirements, stable scope, regulatory compliance</td>
+                            <td>WBS, Critical Path, Earned Value Management</td>
+                            <td style="color: var(--success-color); font-weight: bold;">92%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Adaptive</strong></td>
+                            <td>Evolving requirements, innovative solutions, time-to-market critical</td>
+                            <td>Sprints, User Stories, Velocity Tracking</td>
+                            <td style="color: var(--success-color); font-weight: bold;">88%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hybrid</strong></td>
+                            <td>Mixed requirements, phased delivery, organizational constraints</td>
+                            <td>Phased Agile, Agile-Waterfall Hybrid, Adaptive Framework</td>
+                            <td style="color: var(--success-color); font-weight: bold;">91%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Critical Chain</strong></td>
+                            <td>Resource-constrained, complex dependencies, buffer management</td>
+                            <td>Buffer Management, Resource Leveling, CCPM</td>
+                            <td style="color: var(--success-color); font-weight: bold;">85%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>The Strategic Planning Framework</h3>
+                <div style="background: linear-gradient(to right, var(--primary-color), var(--accent-color)); padding: 30px; border-radius: 12px; margin: 40px 0; color: white;">
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;">
+                        <div>
+                            <div style="font-size: 2rem; margin-bottom: 10px;">1️⃣</div>
+                            <strong>Vision & Strategy</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.9;">Define Desired Future State</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; margin-bottom: 10px;">2️⃣</div>
+                            <strong>Design & Architecture</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.9;">Create Solution Blueprint</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; margin-bottom: 10px;">3️⃣</div>
+                            <strong>Execution Planning</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.9;">Develop Implementation Roadmap</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; margin-bottom: 10px;">4️⃣</div>
+                            <strong>Control & Adaptation</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.9;">Monitor & Adjust Strategy</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Timeline -->
+                <h3>Strategic Project Timeline</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Phase 1: Initiation & Discovery</h4>
+                            <p><strong>Duration:</strong> 2-4 Weeks</p>
+                            <p>Stakeholder identification, business case development, feasibility analysis, and project charter creation.</p>
+                            <div class="stat-box" style="margin-top: 10px;">
+                                <span class="number">15%</span>
+                                <span class="label">Total Project Time</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Phase 2: Planning & Design</h4>
+                            <p><strong>Duration:</strong> 4-8 Weeks</p>
+                            <p>Detailed requirements, solution architecture, risk planning, resource allocation, and schedule development.</p>
+                            <div class="stat-box" style="margin-top: 10px;">
+                                <span class="number">20%</span>
+                                <span class="label">Total Project Time</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Phase 3: Execution & Monitoring</h4>
+                            <p><strong>Duration:</strong> 12-24 Weeks</p>
+                            <p>Team mobilization, quality assurance, progress tracking, change management, and stakeholder communication.</p>
+                            <div class="stat-box" style="margin-top: 10px;">
+                                <span class="number">50%</span>
+                                <span class="label">Total Project Time</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Phase 4: Closure & Transition</h4>
+                            <p><strong>Duration:</strong> 2-4 Weeks</p>
+                            <p>Final deliverables, knowledge transfer, lessons learned, benefits realization, and formal project closure.</p>
+                            <div class="stat-box" style="margin-top: 10px;">
+                                <span class="number">15%</span>
+                                <span class="label">Total Project Time</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: Real-World Applications -->
+            <section id="scenarios">
+                <h2>Planning Success Stories from the Field</h2>
+                <p class="lead">Theoretical frameworks transform into tangible value when applied in real business contexts. These scenarios demonstrate how strategic planning turns vision into reality and complexity into opportunity.</p>
+                
+                <div class="tab-container">
+                    <div class="tabs">
+                        <button class="tab-button active" onclick="switchTab('bestPractices')">Best Practices 2024</button>
+                        <button class="tab-button" onclick="switchTab('scenarioA')">Digital Transformation</button>
+                        <button class="tab-button" onclick="switchTab('scenarioB')">Infrastructure Mega-Project</button>
+                        <button class="tab-button" onclick="switchTab('scenarioC')">Product Innovation Launch</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <!-- Best Practices -->
+                        <div id="content-bestPractices" class="tab-pane">
+                            <h3>2024 Planning Excellence Framework</h3>
+                            <div class="grid-container">
+                                <div class="card">
+                                    <h4>AI-Powered Planning</h4>
+                                    <p>Leveraging machine learning for predictive analytics, automated scheduling, and risk forecasting in complex project environments.</p>
+                                    <div class="highlight-box">
+                                        <strong>Impact:</strong> 42% better schedule accuracy with AI-assisted planning.
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <h4>Visual Planning Techniques</h4>
+                                    <p>Using journey mapping, storyboarding, and visual management to enhance stakeholder understanding and engagement.</p>
+                                    <div class="highlight-box">
+                                        <strong>Impact:</strong> 65% faster stakeholder alignment with visual planning tools.
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <h4>Sustainability Integration</h4>
+                                    <p>Embedding environmental, social, and governance (ESG) considerations into project planning and decision-making.</p>
+                                    <div class="highlight-box">
+                                        <strong>Impact:</strong> 78% higher project acceptance with sustainability-focused planning.
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <h4>Remote-First Planning</h4>
+                                    <p>Designing planning processes optimized for distributed teams and virtual collaboration environments.</p>
+                                    <div class="highlight-box">
+                                        <strong>Impact:</strong> 45% reduction in planning cycle time with digital collaboration.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Scenario A -->
+                        <div id="content-scenarioA" class="tab-pane" style="display: none;">
+                            <div class="scenario-header">
+                                <div class="scenario-icon">💻</div>
+                                <div>
+                                    <h3>Enterprise Digital Transformation</h3>
+                                    <p style="color: var(--dark-gray);">$50M Program | 18-Month Timeline | 3,000 Users Across 12 Countries</p>
+                                </div>
+                            </div>
+                            
+                            <div class="scenario-steps">
+                                <div class="step challenge">
+                                    <div class="step-number">1</div>
+                                    <h4>The Challenge</h4>
+                                    <p>Legacy systems across 12 countries with incompatible data formats. Resistance from 40% of user base. Regulatory compliance in 8 jurisdictions. Budget constraint of $50M with 15% contingency.</p>
+                                    <div style="background: rgba(231, 76, 60, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid var(--danger-color);">
+                                        <strong>Critical Issue:</strong> 18-month timeline with 6-month regulatory approval process in 3 countries
+                                    </div>
+                                </div>
+                                
+                                <div class="step application">
+                                    <div class="step-number">2</div>
+                                    <h4>Planning Strategy</h4>
+                                    <p>Implemented phased hybrid planning approach:</p>
+                                    <ul class="custom-list">
+                                        <li><strong>Wave-Based Rollout:</strong> 3 geographic waves with 4-month intervals</li>
+                                        <li><strong>Parallel Workstreams:</strong> Technical implementation, change management, training</li>
+                                        <li><strong>Risk-Based Planning:</strong> 45 identified risks with mitigation strategies</li>
+                                        <li><strong>Stakeholder Engagement:</strong> 12-country steering committee with monthly reviews</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="step result">
+                                    <div class="step-number">3</div>
+                                    <h4>The Result</h4>
+                                    <p>Successful transformation with exceptional outcomes:</p>
+                                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;">
+                                        <div style="text-align: center; background: rgba(39, 174, 96, 0.1); padding: 20px; border-radius: 8px;">
+                                            <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">14 Months</div>
+                                            <div>Completed Ahead of Schedule</div>
+                                        </div>
+                                        <div style="text-align: center; background: rgba(39, 174, 96, 0.1); padding: 20px; border-radius: 8px;">
+                                            <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">$6.2M</div>
+                                            <div>Under Budget (12.4%)</div>
+                                        </div>
+                                        <div style="text-align: center; background: rgba(39, 174, 96, 0.1); padding: 20px; border-radius: 8px;">
+                                            <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">94%</div>
+                                            <div>User Adoption Rate</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Scenario B -->
+                        <div id="content-scenarioB" class="tab-pane" style="display: none;">
+                            <div class="scenario-header">
+                                <div class="scenario-icon">🏗️</div>
+                                <div>
+                                    <h3>Urban Infrastructure Mega-Project</h3>
+                                    <p style="color: var(--dark-gray);">$2.1B Transportation Hub | 5-Year Timeline | 1,200 Workers | Environmental Constraints</p>
+                                </div>
+                            </div>
+                            
+                            <div class="scenario-steps">
+                                <div class="step challenge">
+                                    <div class="step-number">1</div>
+                                    <h4>The Challenge</h4>
+                                    <p>Brownfield site with archaeological significance. 15 stakeholder groups with conflicting interests. Extreme weather constraints (6-month work window). Supply chain disruptions predicted.</p>
+                                    <div style="background: rgba(231, 76, 60, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid var(--danger-color);">
+                                        <strong>Complexity:</strong> 52 interdependent work packages with critical path of 48 months
+                                    </div>
+                                </div>
+                                
+                                <div class="step application">
+                                    <div class="step-number">2</div>
+                                    <h4>Planning Strategy</h4>
+                                    <p>Deployed integrated master planning framework:</p>
+                                    <ul class="custom-list">
+                                        <li><strong>4D BIM Modeling:</strong> Integrated schedule with 3D design visualization</li>
+                                        <li><strong>Lean Construction:</strong> Just-in-time delivery with 15% buffer reduction</li>
+                                        <li><strong>Community Integration:</strong> Monthly town halls and transparent reporting</li>
+                                        <li><strong>Resilience Planning:</strong> Alternative scenarios for supply chain disruptions</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="step result">
+                                    <div class="step-number">3</div>
+                                    <h4>The Result</h4>
+                                    <p>Landmark project delivered with unprecedented efficiency:</p>
+                                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;">
+                                        <div style="text-align: center; background: rgba(39, 174, 96, 0.1); padding: 20px; border-radius: 8px;">
+                                            <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">4.2 Years</div>
+                                            <div>Completed 10 Months Early</div>
+                                        </div>
+                                        <div style="text-align: center; background: rgba(39, 174, 96, 0.1); padding: 20px; border-radius: 8px;">
+                                            <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">$185M</div>
+                                            <div>Cost Savings (8.8%)</div>
+                                        </div>
+                                        <div style="text-align: center; background: rgba(39, 174, 96, 0.1); padding: 20px; border-radius: 8px;">
+                                            <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">0</div>
+                                            <div>Lost-Time Injuries</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: Digital Tools & AI -->
+            <section id="tools" class="tools-section">
+                <h2>AI-Powered Planning & Digital Transformation</h2>
+                <p class="lead" style="color: rgba(255, 255, 255, 0.9);">The 2024 planning revolution is digital. AI-assisted planning tools, predictive analytics, and collaborative platforms are transforming how organizations design and execute complex projects.</p>
+                
+                <div class="quote">
+                    "The best planners are not replaced by AI; they are augmented by it. They leverage technology to extend their strategic thinking, not substitute it."
+                </div>
+                
+                <div class="grid-container">
+                    <div class="card">
+                        <div class="card-icon">🤖</div>
+                        <h4>AI-Powered Predictive Analytics</h4>
+                        <p>Machine learning algorithms that analyze historical data to forecast project outcomes, identify risks, and optimize resource allocation in real-time.</p>
+                        <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <strong>Impact:</strong> 76% improvement in schedule accuracy with AI forecasting
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">📱</div>
+                        <h4>Collaborative Planning Platforms</h4>
+                        <p>Cloud-based tools enabling real-time collaboration, version control, and integrated communication across distributed teams.</p>
+                        <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <strong>Data:</strong> Teams using collaborative tools complete projects 32% faster
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">📊</div>
+                        <h4>Real-Time Dashboard & Reporting</h4>
+                        <p>Interactive visualizations providing instant visibility into project health, progress metrics, and early warning indicators.</p>
+                        <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <strong>Evidence:</strong> Real-time dashboards reduce decision latency by 65%
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">🔄</div>
+                        <h4>Automated Scenario Planning</h4>
+                        <p>Tools that automatically generate and evaluate multiple planning scenarios based on changing constraints and assumptions.</p>
+                        <div style="background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <strong>Strategy:</strong> Evaluate 100+ scenarios in minutes vs. weeks manually
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Digital Planning Maturity Framework</h3>
+                <div style="background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 12px; margin: 40px 0;">
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;">
+                        <div>
+                            <div style="font-size: 2rem; margin-bottom: 10px;">📝</div>
+                            <strong>Manual Planning</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">Spreadsheets & documents</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; margin-bottom: 10px;">💻</div>
+                            <strong>Digital Tools</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">Specialized planning software</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; margin-bottom: 10px;">🔗</div>
+                            <strong>Integrated Systems</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">Connected data ecosystems</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; margin-bottom: 10px;">🧠</div>
+                            <strong>AI-Augmented</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">Predictive & prescriptive AI</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Author Section -->
+            <section id="author" class="author-section">
+                <div class="author-content">
+                    <div class="author-avatar">👨‍💼</div>
+                    <h2 class="author-name">Eng. Ahmed S. AbuAbdu</h2>
+                    <p class="author-title">PMI Authorized Training Partner | Contributor to PMBOK® Guide 8th Edition</p>
+                    <p class="author-experience">13+ Years of Complex Project Leadership | Specialist in Strategic Planning & Digital Transformation</p>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <h4>Professional Email</h4>
+                            <p>ahmedabuabdu90@outlook.com</p>
+                            <small style="opacity: 0.8;">Response within 24 hours</small>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <h4>Direct Contact</h4>
+                            <p>+972 59 981 5677</p>
+                            <small style="opacity: 0.8;">Available on WhatsApp/Telegram</small>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span class="contact-icon">🔗</span>
+                            <h4>Digital Presence</h4>
+                            <p>LinkedIn: Ahmed AbuAbdu</p>
+                            <p>Linktree: linktr.ee/Linktree_3363</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span class="contact-icon">🎓</span>
+                            <h4>Planning Certifications</h4>
+                            <p>PMI-ATP | PMP | PMI-RMP | PMI-SP</p>
+                            <p>Agile Certified Practitioner</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 20px;">Architecting Success Through Strategic Planning</h3>
+            <p style="opacity: 0.9; max-width: 600px; margin: 0 auto 30px;">
+                This comprehensive guide synthesizes the latest research from PMI, MIT Sloan, Gartner, and field experience from global mega-projects.
+            </p>
+            
+            <div class="footer-links">
+                <a href="#foundations">Core Foundations</a>
+                <a href="#methodologies">Methodologies</a>
+                <a href="#scenarios">Case Studies</a>
+                <a href="#tools">Digital Tools</a>
+                <a href="#author">Connect</a>
+            </div>
+            
+            <div class="copyright">
+                © 2024 Ahmed S. AbuAbdu. All rights reserved. | PMI Standards adapted from PMBOK® Guide 7th Edition
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Comprehensive Data Set
+        const pillarsData = {
+            alignment: {
+                title: "Strategic Alignment",
+                icon: "🎯",
+                desc: `<p>Ensuring every project directly supports business objectives and creates measurable value. Includes:</p>
+                      <ul class="custom-list">
+                          <li>Business Case Development & Value Proposition</li>
+                          <li>Stakeholder Analysis & Expectation Management</li>
+                          <li>Strategic Objective Mapping (OKRs/KPIs)</li>
+                          <li>Portfolio Optimization & Resource Allocation</li>
+                      </ul>`,
+                action: "Develop a 'Strategic Alignment Matrix' connecting projects to corporate objectives with clear success metrics. Research shows aligned projects deliver 67% higher business value and achieve 89% stakeholder satisfaction."
+            },
+            risk: {
+                title: "Risk-Intelligent Planning",
+                icon: "📊",
+                desc: `<p>Proactive identification, analysis, and mitigation of uncertainties. Includes:</p>
+                      <ul class="custom-list">
+                          <li>Quantitative Risk Analysis (Monte Carlo Simulation)</li>
+                          <li>Contingency Planning & Reserve Allocation</li>
+                          <li>Resilience Engineering & Adaptive Capacity</li>
+                          <li>Early Warning Indicator Systems</li>
+                      </ul>`,
+                action: "Implement 'Risk-Adjusted Planning' with probabilistic scheduling. Risk-intelligent planning reduces project failures by 72% and cost overruns by 58%."
+            },
+            design: {
+                title: "Adaptive Design Thinking",
+                icon: "🔄",
+                desc: `<p>Human-centered approach to project design focusing on empathy, iteration, and user validation:</p>
+                      <ul class="custom-list">
+                          <li>Empathy Mapping & User Journey Analysis</li>
+                          <li>Rapid Prototyping & Iterative Design</li>
+                          <li>User Validation & Feedback Integration</li>
+                          <li>Solution Architecture & Technical Design</li>
+                      </ul>`,
+                action: "Use 'Design Sprints' for rapid concept validation. Design-led projects achieve 3.5x higher user adoption and 42% faster implementation."
+            },
+            agile: {
+                title: "Agile Planning Frameworks",
+                icon: "⚡",
+                desc: `<p>Flexible, iterative planning approaches that respond to change while maintaining strategic direction:</p>
+                      <ul class="custom-list">
+                          <li>Sprint Planning & Backlog Refinement</li>
+                          <li>Velocity Tracking & Capacity Planning</li>
+                          <li>Release Planning & Roadmapping</li>
+                          <li>Scaled Agile Frameworks (SAFe, LeSS)</li>
+                      </ul>`,
+                action: "Implement 'Adaptive Planning Cycles' with quarterly replanning. Agile planning reduces time-to-market by 45% and increases customer satisfaction by 68%."
+            },
+            data: {
+                title: "Data-Driven Decision Making",
+                icon: "🤖",
+                desc: `<p>Leveraging analytics, predictive modeling, and AI to inform planning decisions:</p>
+                      <ul class="custom-list">
+                          <li>Predictive Analytics & Forecasting Models</li>
+                          <li>Performance Metrics & KPI Dashboards</li>
+                          <li>Machine Learning for Optimization</li>
+                          <li>Real-Time Data Integration & Analysis</li>
+                      </ul>`,
+                action: "Deploy 'Predictive Planning Engines' with AI algorithms. Data-driven planning improves forecast accuracy by 76% and resource utilization by 52%."
+            }
+        };
+
+        // Chart Initialization
+        function initChart() {
+            const canvas = document.getElementById('pillarsChart');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas dimensions
+            canvas.width = canvas.offsetWidth;
+            canvas.height = 400;
+            
+            // Draw polar area chart manually
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = Math.min(centerX, centerY) - 40;
+            
+            const segments = [
+                { label: "Alignment", color: "rgba(46, 204, 113, 0.8)", key: "alignment" },
+                { label: "Risk Intelligence", color: "rgba(52, 152, 219, 0.8)", key: "risk" },
+                { label: "Design Thinking", color: "rgba(155, 89, 182, 0.8)", key: "design" },
+                { label: "Agile Planning", color: "rgba(241, 196, 15, 0.8)", key: "agile" },
+                { label: "Data-Driven", color: "rgba(230, 126, 34, 0.8)", key: "data" }
+            ];
+            
+            // Draw segments
+            const segmentAngle = (2 * Math.PI) / segments.length;
+            
+            segments.forEach((segment, i) => {
+                const startAngle = i * segmentAngle;
+                const endAngle = (i + 1) * segmentAngle;
+                
+                // Draw segment
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+                ctx.closePath();
+                
+                ctx.fillStyle = segment.color;
+                ctx.fill();
+                ctx.strokeStyle = "#ffffff";
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
+                // Add label
+                const labelAngle = startAngle + segmentAngle / 2;
+                const labelRadius = radius + 40;
+                const labelX = centerX + Math.cos(labelAngle) * labelRadius;
+                const labelY = centerY + Math.sin(labelAngle) * labelRadius;
+                
+                ctx.fillStyle = "#2c3e50";
+                ctx.font = "bold 14px 'Roboto', sans-serif";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(segment.label, labelX, labelY);
+            });
+            
+            // Add center circle
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 20, 0, 2 * Math.PI);
+            ctx.fillStyle = "#ffffff";
+            ctx.fill();
+            ctx.strokeStyle = "#2c3e50";
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // Add click events
+            canvas.addEventListener('click', function(event) {
+                const rect = canvas.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+                
+                // Calculate angle from center
+                const dx = x - centerX;
+                const dy = y - centerY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance <= radius) {
+                    const angle = Math.atan2(dy, dx);
+                    const normalizedAngle = angle < 0 ? angle + 2 * Math.PI : angle;
+                    const segmentIndex = Math.floor(normalizedAngle / segmentAngle) % segments.length;
+                    
+                    updateDetail(segments[segmentIndex].key);
+                }
+            });
+            
+            // Add hover effect
+            canvas.addEventListener('mousemove', function(event) {
+                const rect = canvas.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+                
+                const dx = x - centerX;
+                const dy = y - centerY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                canvas.style.cursor = distance <= radius ? 'pointer' : 'default';
+            });
+        }
+
+        // Update Component Detail
+        function updateDetail(key) {
+            const data = pillarsData[key];
+            const container = document.getElementById('componentDetail');
+            
+            // Add animation
+            container.style.opacity = '0.5';
+            container.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                document.getElementById('compIcon').textContent = data.icon;
+                document.getElementById('compTitle').textContent = data.title;
+                document.getElementById('compDesc').innerHTML = data.desc;
+                document.getElementById('compAction').textContent = data.action;
+                
+                container.style.opacity = '1';
+                
+                // Add highlight animation
+                container.style.animation = 'none';
+                setTimeout(() => {
+                    container.style.animation = 'pulse 0.5s';
+                }, 10);
+            }, 300);
+        }
+
+        // Tab Switching
+        function switchTab(tabName) {
+            // Update tab buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            event.target.classList.add('active');
+            
+            // Update tab content
+            const panes = document.querySelectorAll('.tab-pane');
+            panes.forEach(pane => {
+                pane.style.display = 'none';
+            });
+            
+            document.getElementById('content-' + tabName).style.display = 'block';
+        }
+
+        // Navigation Active State
+        function updateNavActive() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize chart
+            initChart();
+            
+            // Set initial tab
+            switchTab('bestPractices');
+            
+            // Update nav on scroll
+            window.addEventListener('scroll', updateNavActive);
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add CSS animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes pulse {
+                    0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4); }
+                    70% { box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
+                    100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            initChart();
+        });
+    </script>
+</body>
+</html>

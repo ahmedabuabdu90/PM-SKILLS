@@ -35,8 +35,6 @@
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col">
-
-    <!-- Navigation -->
     <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
@@ -53,7 +51,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <header class="bg-gradient-to-b from-amber-50 to-[#fdfbf7] py-12 border-b border-amber-100/50">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <span class="inline-block py-1 px-3 rounded-full bg-amber-100 text-amber-800 text-xs font-semibold tracking-wide uppercase mb-4">PMBOK® Guide 8th Edition Aligned</span>
@@ -69,7 +66,6 @@
 
     <main class="flex-grow">
         
-        <!-- SECTION 1: Key Components (Interactive Chart) -->
         <section id="components" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
                 <h3 class="text-2xl font-bold text-gray-900">Core Components of Engagement</h3>
@@ -79,7 +75,6 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <!-- Chart Column -->
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                     <div class="chart-container">
                         <canvas id="componentsChart"></canvas>
@@ -87,7 +82,6 @@
                     <p class="text-center text-xs text-gray-400 mt-4 italic">Click chart segments to view details</p>
                 </div>
 
-                <!-- Content Column -->
                 <div id="componentDetail" class="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-amber-500 fade-in h-full flex flex-col justify-center min-h-[300px]">
                     <div class="mb-4">
                         <span id="compIcon" class="text-4xl mb-2 block">🧠</span>
@@ -106,7 +100,6 @@
             </div>
         </section>
 
-        <!-- SECTION 2: Why It Matters (Importance) -->
         <section class="bg-white py-16 border-y border-gray-100">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="mb-10">
@@ -115,7 +108,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Card 1 -->
                     <div class="p-6 rounded-xl bg-gray-50 border border-gray-100 hover:bg-amber-50 hover:border-amber-200 transition-all duration-300 group cursor-default">
                         <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-2xl shadow-sm mb-4 group-hover:scale-110 transition-transform">🛡️</div>
                         <h4 class="text-lg font-bold text-gray-900 mb-2">Risk Mitigation</h4>
@@ -124,7 +116,6 @@
                         </p>
                     </div>
 
-                    <!-- Card 2 -->
                     <div class="p-6 rounded-xl bg-gray-50 border border-gray-100 hover:bg-amber-50 hover:border-amber-200 transition-all duration-300 group cursor-default">
                         <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-2xl shadow-sm mb-4 group-hover:scale-110 transition-transform">🎯</div>
                         <h4 class="text-lg font-bold text-gray-900 mb-2">Strategic Alignment</h4>
@@ -133,7 +124,6 @@
                         </p>
                     </div>
 
-                    <!-- Card 3 -->
                     <div class="p-6 rounded-xl bg-gray-50 border border-gray-100 hover:bg-amber-50 hover:border-amber-200 transition-all duration-300 group cursor-default">
                         <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-2xl shadow-sm mb-4 group-hover:scale-110 transition-transform">🚀</div>
                         <h4 class="text-lg font-bold text-gray-900 mb-2">Change Adoption</h4>
@@ -145,24 +135,20 @@
             </div>
         </section>
 
-        <!-- SECTION 3: Real World Application (Tabs) -->
         <section id="scenarios" class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8">
                 <h3 class="text-2xl font-bold text-gray-900">Real-World Application</h3>
                 <p class="mt-2 text-gray-600">Select a scenario to see how Best Practices transform challenges into success stories.</p>
             </div>
 
-            <!-- Tabs -->
             <div class="flex justify-center space-x-4 mb-8">
                 <button onclick="switchTab('bestPractices')" id="tab-bp" class="px-5 py-2 rounded-full text-sm font-semibold transition-all bg-gray-900 text-white shadow-md">Best Practices</button>
                 <button onclick="switchTab('scenarioA')" id="tab-a" class="px-5 py-2 rounded-full text-sm font-semibold transition-all bg-gray-100 text-gray-600 hover:bg-gray-200">Scenario A: Resistance</button>
                 <button onclick="switchTab('scenarioB')" id="tab-b" class="px-5 py-2 rounded-full text-sm font-semibold transition-all bg-gray-100 text-gray-600 hover:bg-gray-200">Scenario B: Scope Creep</button>
             </div>
 
-            <!-- Content Area -->
             <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden min-h-[300px]">
                 
-                <!-- Best Practices View -->
                 <div id="content-bestPractices" class="p-8 fade-in">
                     <h4 class="text-xl font-bold text-gray-800 mb-6">Foundations of Effective Interaction</h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -197,7 +183,6 @@
                     </div>
                 </div>
 
-                <!-- Scenario A View -->
                 <div id="content-scenarioA" class="hidden p-8 fade-in bg-gradient-to-r from-white to-blue-50/30">
                     <div class="flex items-center mb-6">
                         <span class="text-3xl mr-4">🏢</span>
@@ -207,7 +192,6 @@
                         </div>
                     </div>
                     <div class="space-y-6 relative">
-                        <!-- Connecting Line -->
                         <div class="absolute left-4 top-4 bottom-4 w-0.5 bg-gray-200"></div>
 
                         <div class="relative pl-12">
@@ -230,7 +214,6 @@
                     </div>
                 </div>
 
-                <!-- Scenario B View -->
                 <div id="content-scenarioB" class="hidden p-8 fade-in bg-gradient-to-r from-white to-amber-50/30">
                     <div class="flex items-center mb-6">
                         <span class="text-3xl mr-4">⚖️</span>
@@ -240,7 +223,6 @@
                         </div>
                     </div>
                     <div class="space-y-6 relative">
-                         <!-- Connecting Line -->
                          <div class="absolute left-4 top-4 bottom-4 w-0.5 bg-gray-200"></div>
 
                         <div class="relative pl-12">
@@ -266,7 +248,6 @@
             </div>
         </section>
 
-        <!-- SECTION 4: Fragile Contexts (Special Focus) -->
         <section id="crisis" class="py-16 bg-gray-900 text-gray-100">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -282,7 +263,6 @@
                     </div>
 
                     <div class="col-span-1 lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <!-- Strategy Card 1 -->
                         <div class="bg-gray-800 p-6 rounded-xl hover:bg-gray-750 transition-colors border border-gray-700">
                             <div class="text-amber-500 text-2xl mb-3">📡</div>
                             <h4 class="font-bold text-lg mb-2">Adaptive Channels</h4>
@@ -290,7 +270,6 @@
                                 Shift to decentralized, low-bandwidth methods (SMS trees, offline-first apps) when connectivity is intermittent.
                             </p>
                         </div>
-                        <!-- Strategy Card 2 -->
                         <div class="bg-gray-800 p-6 rounded-xl hover:bg-gray-750 transition-colors border border-gray-700">
                             <div class="text-amber-500 text-2xl mb-3">❤️‍🩹</div>
                             <h4 class="font-bold text-lg mb-2">Trauma-Informed</h4>
@@ -298,7 +277,6 @@
                                 Shift from "status reporting" to "well-being checks." Validate the team's reality and celebrate survival victories to maintain morale.
                             </p>
                         </div>
-                        <!-- Strategy Card 3 -->
                         <div class="bg-gray-800 p-6 rounded-xl hover:bg-gray-750 transition-colors border border-gray-700">
                             <div class="text-amber-500 text-2xl mb-3">🤝</div>
                             <h4 class="font-bold text-lg mb-2">Community Trust</h4>
@@ -306,7 +284,6 @@
                                 Engage community leaders and proxies. Their trust ensures safe passage and project continuity when formal systems fail.
                             </p>
                         </div>
-                        <!-- Strategy Card 4 -->
                         <div class="bg-gray-800 p-6 rounded-xl hover:bg-gray-750 transition-colors border border-gray-700">
                             <div class="text-amber-500 text-2xl mb-3">📂</div>
                             <h4 class="font-bold text-lg mb-2">Continuity Strategy</h4>
@@ -321,7 +298,6 @@
 
     </main>
 
-    <!-- Footer / Author Attribution -->
     <footer class="bg-white border-t border-gray-200 py-12">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <h4 class="text-lg font-bold text-gray-900 mb-2">Author Attribution</h4>
@@ -348,7 +324,6 @@
     </footer>
 
     <script>
-        // Data Store for Components
         const componentsData = {
             eq: {
                 title: "Emotional Intelligence (EQ)",
@@ -382,7 +357,6 @@
             }
         };
 
-        // Chart.js Initialization
         document.addEventListener('DOMContentLoaded', function() {
             const ctx = document.getElementById('componentsChart').getContext('2d');
             
@@ -443,7 +417,6 @@
             new Chart(ctx, config);
         });
 
-        // Interactive Functions
         function updateDetail(key) {
             const data = componentsData[key];
             const container = document.getElementById('componentDetail');

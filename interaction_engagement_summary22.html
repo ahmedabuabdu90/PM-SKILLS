@@ -4,326 +4,804 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interaction & Engagement: The PM Power Skill</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Teko:wght@400;600&display=swap');
+
+        :root {
+            --primary-color: #003366; /* Deep Blue */
+            --secondary-color: #007BFF; /* Bright Blue */
+            --accent-color: #FFC107; /* Amber/Gold */
+            --text-color: #333;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #495057;
+            --white: #ffffff;
+            --font-main: 'Roboto', sans-serif;
+            --font-heading: 'Teko', sans-serif;
+            --chart-amber: rgba(245, 158, 11, 0.8);
+            --chart-green: rgba(16, 185, 129, 0.8);
+            --chart-blue: rgba(59, 130, 246, 0.8);
+            --chart-purple: rgba(139, 92, 246, 0.8);
+            --chart-pink: rgba(236, 72, 153, 0.8);
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #fdfbf7;
-            color: #1f2937;
+            font-family: var(--font-main);
+            line-height: 1.8;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 8px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(255, 193, 7, 0.1) 0%, transparent 50%);
+        }
+
+        header h1 {
+            font-family: var(--font-heading);
+            font-size: 4.5rem;
+            margin: 0;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        header .subtitle {
+            font-size: 1.5rem;
+            margin-top: 15px;
+            opacity: 0.95;
+            font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--secondary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        section.high-stress {
+            border-left-color: #D32F2F;
+            background: linear-gradient(to right, #FFF3F3, #FFFFFF);
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 3.2rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 15px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        h3 {
+            font-family: var(--font-heading);
+            font-size: 2.4rem;
+            color: var(--secondary-color);
+            margin-top: 35px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        h4 {
+            font-family: var(--font-main);
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        p, ul, li {
+            font-size: 1.15rem;
+            color: var(--dark-gray);
+            line-height: 1.8;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            width: 25px;
+            height: 25px;
+            background-color: rgba(0, 123, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .chart-container {
-            position: relative;
             width: 100%;
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 400px;
+            margin: 30px auto;
+            position: relative;
+            background: var(--light-gray);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
         }
 
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+            width: 100%;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .component-detail {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border: 2px solid rgba(0, 123, 255, 0.1);
+            margin-top: 30px;
+        }
+
+        .component-detail h4 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            border-left: none;
+            padding-left: 0;
+        }
+
+        .component-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .practical-tip {
+            background-color: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin-top: 25px;
+            border-radius: 8px;
+        }
+
+        .practical-tip strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .grid-item {
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grid-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+        }
+
+        .grid-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
+        .grid-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .tab-container {
+            margin: 30px 0;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 12px 30px;
+            background-color: var(--light-gray);
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-main);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--dark-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .tab-button.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 51, 102, 0.2);
+        }
+
+        .tab-button:hover:not(.active) {
+            background-color: var(--medium-gray);
+            border-color: var(--secondary-color);
+        }
+
+        .tab-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border: 1px solid var(--medium-gray);
+        }
+
+        .scenario {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .scenario::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--medium-gray);
+        }
+
+        .step {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .step-number {
+            position: absolute;
+            left: -50px;
+            top: 25px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+        }
+
+        .step.challenge .step-number {
+            background-color: #D32F2F;
+        }
+
+        .step.application .step-number {
+            background-color: var(--accent-color);
+        }
+
+        .step.result .step-number {
+            background-color: #2E7D32;
+        }
+
+        .author-block {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%);
+            color: var(--white);
+            padding: 50px;
+            margin-top: 60px;
+            border-radius: 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .author-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(255, 193, 7, 0.15) 0%, transparent 50%);
+        }
+
+        .author-block h3 {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            color: var(--white);
+            margin: 0 0 15px 0;
+            position: relative;
+        }
+
+        .author-block h3::before {
+            display: none;
+        }
+
+        .author-block .title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--accent-color);
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .author-block .experience {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 15px 0 30px 0;
+            position: relative;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .contact-info a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 12px 25px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-info a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .navigation {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 50px;
+            padding: 10px 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 3rem;
+            }
+            
+            header .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            section {
+                padding: 25px;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+            
+            h3 {
+                font-size: 2rem;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation {
+                position: static;
+                width: 100%;
+                margin-bottom: 20px;
+                border-radius: 12px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            header {
+                padding: 40px 15px;
+            }
+            
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            .tab-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
-    <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <span class="text-2xl mr-2">🤝</span>
-                    <h1 class="font-bold text-xl text-gray-800 tracking-tight">PM Interaction & Engagement</h1>
-                </div>
-                <div class="flex items-center space-x-4 text-sm font-medium text-gray-500">
-                    <a href="#components" class="hover:text-amber-600 transition-colors">Components</a>
-                    <a href="#scenarios" class="hover:text-amber-600 transition-colors">Scenarios</a>
-                    <a href="#crisis" class="hover:text-amber-600 transition-colors">Resilience</a>
-                </div>
-            </div>
+<body>
+    <nav class="navigation">
+        <div class="nav-links">
+            <a href="#components">Components</a>
+            <a href="#importance">Importance</a>
+            <a href="#scenarios">Scenarios</a>
+            <a href="#crisis">Resilience</a>
+            <a href="#author">Author</a>
         </div>
     </nav>
 
-    <header class="bg-gradient-to-b from-amber-50 to-[#fdfbf7] py-12 border-b border-amber-100/50">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <span class="inline-block py-1 px-3 rounded-full bg-amber-100 text-amber-800 text-xs font-semibold tracking-wide uppercase mb-4">PMBOK® Guide 8th Edition Aligned</span>
-            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">Bridging Outputs to <span class="text-amber-600">Value</span></h2>
-            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Interaction & Engagement is the "Power Skill" that connects technical project deliverables with organizational adoption. It is the strategic ability to navigate complex interpersonal dynamics and foster psychological safety.
-            </p>
-            <div class="flex justify-center gap-4">
-                <button onclick="document.getElementById('components').scrollIntoView({behavior: 'smooth'})" class="px-6 py-3 bg-gray-900 text-white rounded-lg font-semibold shadow-lg hover:bg-gray-800 transition-all transform hover:-translate-y-0.5">Explore Key Components</button>
-            </div>
-        </div>
+    <header>
+        <div class="badge">PMBOK® Guide 8th Edition Aligned</div>
+        <h1>Interaction & Engagement</h1>
+        <p class="subtitle">The "Power Skill" that bridges technical project deliverables with organizational adoption. Mastering the art of navigating complex interpersonal dynamics to foster psychological safety.</p>
     </header>
 
-    <main class="flex-grow">
-        
-        <section id="components" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10">
-                <h3 class="text-2xl font-bold text-gray-900">Core Components of Engagement</h3>
-                <p class="mt-2 text-gray-600 max-w-2xl mx-auto">
-                    Mastering interaction requires a balance of five critical disciplines. Click on the chart segments below to explore the definition and practical application of each component as defined by modern PMI standards.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                    <div class="chart-container">
+    <div class="container">
+        <main>
+            <!-- SECTION 1: Key Components -->
+            <section id="components">
+                <h2>Core Components of Engagement</h2>
+                <p>Mastering interaction requires a balance of five critical disciplines. Click on the chart segments below to explore the definition and practical application of each component as defined by modern PMI standards.</p>
+                
+                <div class="chart-container">
+                    <div class="chart-wrapper">
                         <canvas id="componentsChart"></canvas>
                     </div>
-                    <p class="text-center text-xs text-gray-400 mt-4 italic">Click chart segments to view details</p>
+                    <p style="text-align: center; margin-top: 15px; color: var(--dark-gray); font-style: italic;">Click chart segments to view details</p>
                 </div>
 
-                <div id="componentDetail" class="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-amber-500 fade-in h-full flex flex-col justify-center min-h-[300px]">
-                    <div class="mb-4">
-                        <span id="compIcon" class="text-4xl mb-2 block">🧠</span>
-                        <h4 id="compTitle" class="text-2xl font-bold text-gray-900">Emotional Intelligence (EQ)</h4>
-                    </div>
-                    <p id="compDesc" class="text-gray-600 text-lg leading-relaxed mb-6">
-                        The ability to recognize personal emotions and empathize with the team. This is critical for conflict resolution and building a supportive team environment.
-                    </p>
-                    <div class="bg-amber-50 p-4 rounded-lg">
-                        <h5 class="text-sm font-bold text-amber-800 uppercase tracking-wide mb-1">Practical Application</h5>
-                        <p id="compAction" class="text-gray-700 text-sm">
-                            Before reacting to a project crisis, pause to assess your own stress levels. Validate the team's feelings before jumping to problem-solving.
-                        </p>
+                <div id="componentDetail" class="component-detail">
+                    <div class="component-icon" id="compIcon">🧠</div>
+                    <h4 id="compTitle">Emotional Intelligence (EQ)</h4>
+                    <p id="compDesc">The ability to recognize personal emotions and empathize with the team. This is critical for conflict resolution and building a supportive team environment.</p>
+                    <div class="practical-tip">
+                        <strong>Practical Application:</strong>
+                        <p id="compAction">Before reacting to a project crisis, pause to assess your own stress levels. Validate the team's feelings before jumping to problem-solving.</p>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="bg-white py-16 border-y border-gray-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="mb-10">
-                    <h3 class="text-2xl font-bold text-gray-900">Why Interaction Ensures Success</h3>
-                    <p class="mt-2 text-gray-600">Technical skills build the product; interaction skills ensure it is used. Explore the three pillars of engagement impact.</p>
-                </div>
+            <!-- SECTION 2: Why It Matters -->
+            <section id="importance">
+                <h2>Why Interaction Ensures Success</h2>
+                <p>Technical skills build the product; interaction skills ensure it is used. Explore the three pillars of engagement impact.</p>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="p-6 rounded-xl bg-gray-50 border border-gray-100 hover:bg-amber-50 hover:border-amber-200 transition-all duration-300 group cursor-default">
-                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-2xl shadow-sm mb-4 group-hover:scale-110 transition-transform">🛡️</div>
-                        <h4 class="text-lg font-bold text-gray-900 mb-2">Risk Mitigation</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            High engagement creates transparency. When stakeholders feel heard, they flag risks early rather than hiding them, allowing for proactive mitigation.
-                        </p>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <div class="icon">🛡️</div>
+                        <h4>Risk Mitigation</h4>
+                        <p>High engagement creates transparency. When stakeholders feel heard, they flag risks early rather than hiding them, allowing for proactive mitigation.</p>
                     </div>
 
-                    <div class="p-6 rounded-xl bg-gray-50 border border-gray-100 hover:bg-amber-50 hover:border-amber-200 transition-all duration-300 group cursor-default">
-                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-2xl shadow-sm mb-4 group-hover:scale-110 transition-transform">🎯</div>
-                        <h4 class="text-lg font-bold text-gray-900 mb-2">Strategic Alignment</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Projects evolve. Continuous interaction ensures the project shifts with changing business goals (Agile mindset), preventing the delivery of obsolete outputs.
-                        </p>
+                    <div class="grid-item">
+                        <div class="icon">🎯</div>
+                        <h4>Strategic Alignment</h4>
+                        <p>Projects evolve. Continuous interaction ensures the project shifts with changing business goals (Agile mindset), preventing the delivery of obsolete outputs.</p>
                     </div>
 
-                    <div class="p-6 rounded-xl bg-gray-50 border border-gray-100 hover:bg-amber-50 hover:border-amber-200 transition-all duration-300 group cursor-default">
-                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-2xl shadow-sm mb-4 group-hover:scale-110 transition-transform">🚀</div>
-                        <h4 class="text-lg font-bold text-gray-900 mb-2">Change Adoption</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Engagement minimizes resistance. By involving stakeholders in the process, they become part of the solution rather than passive recipients of change.
-                        </p>
+                    <div class="grid-item">
+                        <div class="icon">🚀</div>
+                        <h4>Change Adoption</h4>
+                        <p>Engagement minimizes resistance. By involving stakeholders in the process, they become part of the solution rather than passive recipients of change.</p>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="scenarios" class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <h3 class="text-2xl font-bold text-gray-900">Real-World Application</h3>
-                <p class="mt-2 text-gray-600">Select a scenario to see how Best Practices transform challenges into success stories.</p>
-            </div>
+            <!-- SECTION 3: Real World Application -->
+            <section id="scenarios">
+                <h2>Real-World Application</h2>
+                <p>Select a scenario to see how Best Practices transform challenges into success stories.</p>
 
-            <div class="flex justify-center space-x-4 mb-8">
-                <button onclick="switchTab('bestPractices')" id="tab-bp" class="px-5 py-2 rounded-full text-sm font-semibold transition-all bg-gray-900 text-white shadow-md">Best Practices</button>
-                <button onclick="switchTab('scenarioA')" id="tab-a" class="px-5 py-2 rounded-full text-sm font-semibold transition-all bg-gray-100 text-gray-600 hover:bg-gray-200">Scenario A: Resistance</button>
-                <button onclick="switchTab('scenarioB')" id="tab-b" class="px-5 py-2 rounded-full text-sm font-semibold transition-all bg-gray-100 text-gray-600 hover:bg-gray-200">Scenario B: Scope Creep</button>
-            </div>
+                <div class="tab-container">
+                    <div class="tabs">
+                        <button class="tab-button active" onclick="switchTab('bestPractices')">Best Practices</button>
+                        <button class="tab-button" onclick="switchTab('scenarioA')">Scenario A: Resistance</button>
+                        <button class="tab-button" onclick="switchTab('scenarioB')">Scenario B: Scope Creep</button>
+                    </div>
 
-            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden min-h-[300px]">
+                    <div class="tab-content">
+                        <div id="content-bestPractices" class="tab-pane">
+                            <h3>Foundations of Effective Interaction</h3>
+                            <div class="grid-container">
+                                <div>
+                                    <ul>
+                                        <li><strong>Tailored Communication:</strong> Abandon "one-size-fits-all". Customize granularity for executives vs. technical teams.</li>
+                                        <li><strong>Feedback Loops:</strong> Establish mechanisms for continuous, bi-directional feedback (e.g., Retrospectives).</li>
+                                        <li><strong>Psychological Safety:</strong> Make it safe to report errors. Innovation dies where fear of retribution lives.</li>
+                                        <li><strong>Servant Leadership:</strong> Focus on unblocking the team and supporting growth, not just commanding tasks.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="content-scenarioA" class="tab-pane" style="display: none;">
+                            <div style="display: flex; align-items: center; margin-bottom: 30px;">
+                                <span style="font-size: 2.5rem; margin-right: 15px;">🏢</span>
+                                <div>
+                                    <h3>Digital Transformation in a Traditional Firm</h3>
+                                    <p style="color: var(--dark-gray); font-style: italic;">The Human Side of Change</p>
+                                </div>
+                            </div>
+                            
+                            <div class="scenario">
+                                <div class="step challenge">
+                                    <div class="step-number">1</div>
+                                    <h4>The Challenge</h4>
+                                    <p>Legacy staff were highly resistant to new software implementation, fearing obsolescence.</p>
+                                </div>
+                                
+                                <div class="step application">
+                                    <div class="step-number">2</div>
+                                    <h4>The Application</h4>
+                                    <p>PM used <strong>Change Management Interaction</strong>. Organized "Champion Workshops" to engage influential employees to co-design the rollout instead of just emailing manuals.</p>
+                                </div>
+                                
+                                <div class="step result">
+                                    <div class="step-number">3</div>
+                                    <h4>The Result</h4>
+                                    <p>Resistance turned into advocacy. Adoption rates increased by 40%.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="content-scenarioB" class="tab-pane" style="display: none;">
+                            <div style="display: flex; align-items: center; margin-bottom: 30px;">
+                                <span style="font-size: 2.5rem; margin-right: 15px;">⚖️</span>
+                                <div>
+                                    <h3>Scope Creep in a Client Project</h3>
+                                    <p style="color: var(--dark-gray); font-style: italic;">Managing Expectations</p>
+                                </div>
+                            </div>
+                            
+                            <div class="scenario">
+                                <div class="step challenge">
+                                    <div class="step-number">1</div>
+                                    <h4>The Challenge</h4>
+                                    <p>A client was constantly adding new requirements without adjusting the timeline.</p>
+                                </div>
+                                
+                                <div class="step application">
+                                    <div class="step-number">2</div>
+                                    <h4>The Application</h4>
+                                    <p>PM used <strong>Negotiation Engagement</strong>. Avoided a hard "no" and instead facilitated a trade-off analysis session, visualizing the impact of new features.</p>
+                                </div>
+                                
+                                <div class="step result">
+                                    <div class="step-number">3</div>
+                                    <h4>The Result</h4>
+                                    <p>Client voluntarily prioritized the backlog. The release schedule was maintained.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: Fragile Contexts -->
+            <section id="crisis" class="high-stress">
+                <h2>Resilience & Humanity in Conflict Zones</h2>
+                <p>Managing projects in conflict-affected regions requires a fundamental shift from "Efficiency" to "Resilience". Standard engagement plans often fail when infrastructure is damaged or safety is threatened.</p>
                 
-                <div id="content-bestPractices" class="p-8 fade-in">
-                    <h4 class="text-xl font-bold text-gray-800 mb-6">Foundations of Effective Interaction</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="flex items-start">
-                            <span class="text-amber-500 mr-3 text-lg">✓</span>
-                            <div>
-                                <strong class="block text-gray-900">Tailored Communication</strong>
-                                <span class="text-sm text-gray-600">Abandon "one-size-fits-all". Customize granularity for executives vs. technical teams.</span>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <span class="text-amber-500 mr-3 text-lg">✓</span>
-                            <div>
-                                <strong class="block text-gray-900">Feedback Loops</strong>
-                                <span class="text-sm text-gray-600">Establish mechanisms for continuous, bi-directional feedback (e.g., Retrospectives).</span>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <span class="text-amber-500 mr-3 text-lg">✓</span>
-                            <div>
-                                <strong class="block text-gray-900">Psychological Safety</strong>
-                                <span class="text-sm text-gray-600">Make it safe to report errors. Innovation dies where fear of retribution lives.</span>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <span class="text-amber-500 mr-3 text-lg">✓</span>
-                            <div>
-                                <strong class="block text-gray-900">Servant Leadership</strong>
-                                <span class="text-sm text-gray-600">Focus on unblocking the team and supporting growth, not just commanding tasks.</span>
-                            </div>
-                        </div>
+                <div class="badge" style="background-color: #D32F2F; color: white; margin: 30px 0;">Focus: Gaza, Syria, Conflict Zones</div>
+                
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <div class="icon">📡</div>
+                        <h4>Adaptive Channels</h4>
+                        <p>Shift to decentralized, low-bandwidth methods (SMS trees, offline-first apps) when connectivity is intermittent.</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <div class="icon">❤️‍🩹</div>
+                        <h4>Trauma-Informed</h4>
+                        <p>Shift from "status reporting" to "well-being checks." Validate the team's reality and celebrate survival victories to maintain morale.</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <div class="icon">🤝</div>
+                        <h4>Community Trust</h4>
+                        <p>Engage community leaders and proxies. Their trust ensures safe passage and project continuity when formal systems fail.</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <div class="icon">📂</div>
+                        <h4>Continuity Strategy</h4>
+                        <p>Rigorous yet accessible documentation allows work to be picked up immediately if a team member is displaced.</p>
                     </div>
                 </div>
+                
+                <blockquote style="margin-top: 40px; font-size: 1.2rem; border-left-color: #D32F2F;">
+                    "In volatility, formal authority means less than relational trust."
+                </blockquote>
+            </section>
 
-                <div id="content-scenarioA" class="hidden p-8 fade-in bg-gradient-to-r from-white to-blue-50/30">
-                    <div class="flex items-center mb-6">
-                        <span class="text-3xl mr-4">🏢</span>
-                        <div>
-                            <h4 class="text-xl font-bold text-gray-900">Digital Transformation in a Traditional Firm</h4>
-                            <p class="text-sm text-gray-500">The Human Side of Change</p>
-                        </div>
-                    </div>
-                    <div class="space-y-6 relative">
-                        <div class="absolute left-4 top-4 bottom-4 w-0.5 bg-gray-200"></div>
-
-                        <div class="relative pl-12">
-                            <div class="absolute left-0 top-0 w-8 h-8 bg-red-100 text-red-600 rounded-full flex items-center justify-center font-bold text-sm border-2 border-white shadow-sm">1</div>
-                            <h5 class="font-bold text-gray-800">The Challenge</h5>
-                            <p class="text-gray-600 text-sm mt-1">Legacy staff were highly resistant to new software implementation, fearing obsolescence.</p>
-                        </div>
-
-                        <div class="relative pl-12">
-                            <div class="absolute left-0 top-0 w-8 h-8 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center font-bold text-sm border-2 border-white shadow-sm">2</div>
-                            <h5 class="font-bold text-gray-800">The Application</h5>
-                            <p class="text-gray-600 text-sm mt-1">PM used <strong>Change Management Interaction</strong>. Organized "Champion Workshops" to engage influential employees to co-design the rollout instead of just emailing manuals.</p>
-                        </div>
-
-                        <div class="relative pl-12">
-                            <div class="absolute left-0 top-0 w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold text-sm border-2 border-white shadow-sm">3</div>
-                            <h5 class="font-bold text-gray-800">The Result</h5>
-                            <p class="text-gray-600 text-sm mt-1">Resistance turned into advocacy. Adoption rates increased by 40%.</p>
-                        </div>
-                    </div>
+            <!-- Author Section -->
+            <section id="author" class="author-block">
+                <h3>Eng. Ahmed S. AbuAbdu</h3>
+                <p class="title">PMI Authorized Trainer | Contributor to PMBOK® Guide 8th Edition</p>
+                <p class="experience">13+ Years of Project Management Excellence</p>
+                
+                <div class="contact-info">
+                    <a href="mailto:ahmedabuabdu90@outlook.com">
+                        <span>📧</span> ahmedabuabdu90@outlook.com
+                    </a>
+                    <a href="https://wa.me/972599815677">
+                        <span>📱</span> +972 59 981 5677
+                    </a>
+                    <a href="https://linktr.ee/Linktree_3363" target="_blank">
+                        <span>🔗</span> Social Media Links
+                    </a>
                 </div>
-
-                <div id="content-scenarioB" class="hidden p-8 fade-in bg-gradient-to-r from-white to-amber-50/30">
-                    <div class="flex items-center mb-6">
-                        <span class="text-3xl mr-4">⚖️</span>
-                        <div>
-                            <h4 class="text-xl font-bold text-gray-900">Scope Creep in a Client Project</h4>
-                            <p class="text-sm text-gray-500">Managing Expectations</p>
-                        </div>
-                    </div>
-                    <div class="space-y-6 relative">
-                         <div class="absolute left-4 top-4 bottom-4 w-0.5 bg-gray-200"></div>
-
-                        <div class="relative pl-12">
-                            <div class="absolute left-0 top-0 w-8 h-8 bg-red-100 text-red-600 rounded-full flex items-center justify-center font-bold text-sm border-2 border-white shadow-sm">1</div>
-                            <h5 class="font-bold text-gray-800">The Challenge</h5>
-                            <p class="text-gray-600 text-sm mt-1">A client was constantly adding new requirements without adjusting the timeline.</p>
-                        </div>
-
-                        <div class="relative pl-12">
-                            <div class="absolute left-0 top-0 w-8 h-8 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center font-bold text-sm border-2 border-white shadow-sm">2</div>
-                            <h5 class="font-bold text-gray-800">The Application</h5>
-                            <p class="text-gray-600 text-sm mt-1">PM used <strong>Negotiation Engagement</strong>. Avoided a hard "no" and instead facilitated a trade-off analysis session, visualizing the impact of new features.</p>
-                        </div>
-
-                        <div class="relative pl-12">
-                            <div class="absolute left-0 top-0 w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold text-sm border-2 border-white shadow-sm">3</div>
-                            <h5 class="font-bold text-gray-800">The Result</h5>
-                            <p class="text-gray-600 text-sm mt-1">Client voluntarily prioritized the backlog. The release schedule was maintained.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="crisis" class="py-16 bg-gray-900 text-gray-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                    <div class="col-span-1">
-                        <div class="inline-block px-3 py-1 border border-amber-500/50 rounded-full text-amber-500 text-xs font-bold uppercase mb-4">Focus: Gaza, Syria, Conflict Zones</div>
-                        <h3 class="text-3xl font-bold mb-4">Resilience & Humanity</h3>
-                        <p class="text-gray-400 leading-relaxed mb-6">
-                            Managing projects in conflict-affected regions requires a fundamental shift from "Efficiency" to "Resilience". Standard engagement plans often fail when infrastructure is damaged or safety is threatened.
-                        </p>
-                        <div class="p-4 bg-gray-800 rounded-lg border-l-4 border-amber-500">
-                            <p class="text-sm italic text-gray-300">"In volatility, formal authority means less than relational trust."</p>
-                        </div>
-                    </div>
-
-                    <div class="col-span-1 lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="bg-gray-800 p-6 rounded-xl hover:bg-gray-750 transition-colors border border-gray-700">
-                            <div class="text-amber-500 text-2xl mb-3">📡</div>
-                            <h4 class="font-bold text-lg mb-2">Adaptive Channels</h4>
-                            <p class="text-gray-400 text-sm">
-                                Shift to decentralized, low-bandwidth methods (SMS trees, offline-first apps) when connectivity is intermittent.
-                            </p>
-                        </div>
-                        <div class="bg-gray-800 p-6 rounded-xl hover:bg-gray-750 transition-colors border border-gray-700">
-                            <div class="text-amber-500 text-2xl mb-3">❤️‍🩹</div>
-                            <h4 class="font-bold text-lg mb-2">Trauma-Informed</h4>
-                            <p class="text-gray-400 text-sm">
-                                Shift from "status reporting" to "well-being checks." Validate the team's reality and celebrate survival victories to maintain morale.
-                            </p>
-                        </div>
-                        <div class="bg-gray-800 p-6 rounded-xl hover:bg-gray-750 transition-colors border border-gray-700">
-                            <div class="text-amber-500 text-2xl mb-3">🤝</div>
-                            <h4 class="font-bold text-lg mb-2">Community Trust</h4>
-                            <p class="text-gray-400 text-sm">
-                                Engage community leaders and proxies. Their trust ensures safe passage and project continuity when formal systems fail.
-                            </p>
-                        </div>
-                        <div class="bg-gray-800 p-6 rounded-xl hover:bg-gray-750 transition-colors border border-gray-700">
-                            <div class="text-amber-500 text-2xl mb-3">📂</div>
-                            <h4 class="font-bold text-lg mb-2">Continuity Strategy</h4>
-                            <p class="text-gray-400 text-sm">
-                                Rigorous yet accessible documentation allows work to be picked up immediately if a team member is displaced.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="bg-white border-t border-gray-200 py-12">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h4 class="text-lg font-bold text-gray-900 mb-2">Author Attribution</h4>
-            <div class="inline-block p-1 rounded-full bg-amber-100 mb-4">
-                <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-2xl">👨‍💼</div>
-            </div>
-            <h5 class="text-xl font-bold text-gray-800">Eng. Ahmed S. AbuAbdu</h5>
-            <p class="text-amber-600 font-medium text-sm mb-4">PMI Authorized Trainer | Contributor to PMBOK® Guide 8th Edition</p>
-            <p class="text-gray-500 text-sm mb-6">13+ Years of Project Management Excellence</p>
-            
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 text-sm text-gray-600">
-                <a href="mailto:ahmedabuabdu90@outlook.com" class="hover:text-amber-600 transition-colors flex items-center">
-                    <span class="mr-2">📧</span> ahmedabuabdu90@outlook.com
-                </a>
-                <span class="hidden sm:inline text-gray-300">|</span>
-                <a href="https://wa.me/972599815677" class="hover:text-amber-600 transition-colors flex items-center">
-                    <span class="mr-2">📱</span> +972 59 981 5677
-                </a>
-            </div>
-            <div class="mt-4">
-                <a href="https://linktr.ee/Linktree_3363" class="text-xs text-gray-400 hover:text-amber-600 transition-colors">Socials: Instagram, Facebook, TikTok</a>
-            </div>
-        </div>
-    </footer>
+            </section>
+        </main>
+    </div>
 
     <script>
+        // Chart.js Implementation
         const componentsData = {
             eq: {
                 title: "Emotional Intelligence (EQ)",
@@ -357,10 +835,11 @@
             }
         };
 
-        document.addEventListener('DOMContentLoaded', function() {
+        // Initialize Chart
+        function initChart() {
             const ctx = document.getElementById('componentsChart').getContext('2d');
             
-            const config = {
+            const chart = new Chart(ctx, {
                 type: 'polarArea',
                 data: {
                     labels: ['Emotional Intelligence', 'Stakeholder Analysis', 'Active Listening', 'Cultural Intelligence', 'Facilitation'],
@@ -368,13 +847,13 @@
                         label: 'Key Component',
                         data: [10, 10, 10, 10, 10],
                         backgroundColor: [
-                            'rgba(245, 158, 11, 0.7)',
-                            'rgba(16, 185, 129, 0.7)',
-                            'rgba(59, 130, 246, 0.7)',
-                            'rgba(139, 92, 246, 0.7)',
-                            'rgba(236, 72, 153, 0.7)'
+                            'rgba(245, 158, 11, 0.8)',
+                            'rgba(16, 185, 129, 0.8)',
+                            'rgba(59, 130, 246, 0.8)',
+                            'rgba(139, 92, 246, 0.8)',
+                            'rgba(236, 72, 153, 0.8)'
                         ],
-                        borderWidth: 1,
+                        borderWidth: 2,
                         borderColor: '#ffffff'
                     }]
                 },
@@ -384,16 +863,19 @@
                     scales: {
                         r: {
                             ticks: { display: false },
-                            grid: { color: '#f3f4f6' }
+                            grid: { color: 'rgba(0, 0, 0, 0.1)' }
                         }
                     },
                     plugins: {
                         legend: {
                             position: 'bottom',
                             labels: {
-                                font: { size: 12, family: "'Inter', sans-serif" },
-                                boxWidth: 10,
-                                padding: 20
+                                font: {
+                                    size: 14,
+                                    family: "'Roboto', sans-serif"
+                                },
+                                padding: 20,
+                                usePointStyle: true,
                             }
                         },
                         tooltip: {
@@ -412,17 +894,19 @@
                         }
                     }
                 }
-            };
+            });
+            
+            return chart;
+        }
 
-            new Chart(ctx, config);
-        });
-
+        // Update Component Detail
         function updateDetail(key) {
             const data = componentsData[key];
             const container = document.getElementById('componentDetail');
             
-            container.classList.remove('fade-in');
+            // Add fade effect
             container.style.opacity = '0.5';
+            container.style.transition = 'opacity 0.3s ease';
             
             setTimeout(() => {
                 document.getElementById('compTitle').textContent = data.title;
@@ -431,34 +915,66 @@
                 document.getElementById('compAction').textContent = data.action;
                 
                 container.style.opacity = '1';
-                container.classList.add('fade-in');
-            }, 200);
+            }, 300);
         }
 
+        // Tab Switching
         function switchTab(tabName) {
-            const tabs = ['bestPractices', 'scenarioA', 'scenarioB'];
-            const btnClassInactive = "bg-gray-100 text-gray-600 hover:bg-gray-200";
-            const btnClassActive = "bg-gray-900 text-white shadow-md";
-
-            const idMap = {
-                'bestPractices': 'tab-bp',
-                'scenarioA': 'tab-a',
-                'scenarioB': 'tab-b'
-            };
-
-            tabs.forEach(t => {
-                const btn = document.getElementById(idMap[t]);
-                const content = document.getElementById('content-' + t);
-                
-                if (t === tabName) {
-                    btn.className = `px-5 py-2 rounded-full text-sm font-semibold transition-all ${btnClassActive}`;
-                    content.classList.remove('hidden');
-                } else {
-                    btn.className = `px-5 py-2 rounded-full text-sm font-semibold transition-all ${btnClassInactive}`;
-                    content.classList.add('hidden');
+            // Update tab buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.includes(tabName === 'bestPractices' ? 'Best Practices' : 
+                                           tabName === 'scenarioA' ? 'Scenario A' : 'Scenario B')) {
+                    btn.classList.add('active');
                 }
             });
+            
+            // Update tab content
+            const panes = document.querySelectorAll('.tab-pane');
+            panes.forEach(pane => {
+                pane.style.display = 'none';
+            });
+            
+            document.getElementById('content-' + tabName).style.display = 'block';
         }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initChart();
+            
+            // Set initial tab
+            switchTab('bestPractices');
+            
+            // Add scroll effect to navigation
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('.navigation');
+                if (window.scrollY > 100) {
+                    nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+                    nav.style.transform = 'translateY(0)';
+                } else {
+                    nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+                    nav.style.transform = 'translateY(0)';
+                }
+            });
+        });
     </script>
 </body>
 </html>
